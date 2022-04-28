@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dislikeSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   card: {
     type: mongoose.Types.ObjectId,
     required: true
@@ -12,10 +12,10 @@ const dislikeSchema = new mongoose.Schema({
   },
   value: {
     type: Number,
-    default: 0.3
+    enum: [-0.3, 0, 0.3]
   }
 });
 
-const Like = mongoose.model('Dislike', dislikeSchema);
+const Feedback = mongoose.model('Feedback', schema);
 
-module.exports = Dislike;
+module.exports = Feedback;
