@@ -4,6 +4,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 
 const User = require('./models/user');
 const bcryptjs = require('bcryptjs');
@@ -120,6 +121,45 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK,
+      scope: ['email', 'profile']
+    },
+    (accessToken, refreshToken, profile, callback) => {
+      const {
+        displayName: name,
+        emails,
+        photos: [{ value: photo } = {}] = []
+      } = profile;
+      const primaryEmail = emails[0].value;
+      User.findOne({ email: primaryEmail })
+        .then((user) => {
+          if (user) {
+            return Promise.resolve(user);
+          } else {
+            return User.create({
+              email: primaryEmail,
+              picture: photo,
+              name,
+              accessToken
+            });
+          }
+        })
+        .then((user) => {
+          callback(null, user);
+        })
+        .catch((error) => {
+          callback(error);
+        });
+    }
+  )
+);
+
+passport.use(
+  'twitter',
+  new TwitterStrategy(
+    {
+      consumerKey: process.env.TWITTER_CLIENT_ID,
+      consumerSecret: process.env.TWITTER_CLIENT_SECRET,
+      callbackURL: process.env.TWITTER_CALLBACK,
       scope: ['email', 'profile']
     },
     (accessToken, refreshToken, profile, callback) => {
