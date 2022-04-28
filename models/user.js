@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
   email: {
     type: String,
@@ -15,6 +16,17 @@ const schema = new mongoose.Schema({
   },
   passwordHashAndSalt: {
     type: String
+  },
+  accessToken: {
+    type: String
+  },
+  picture: {
+    type: String,
+    default: 'https://cdn.landesa.org/wp-content/uploads/default-user-image.png'
+  },
+  totalScore: {
+    type: Number,
+    default: 0
   }
 });
 
