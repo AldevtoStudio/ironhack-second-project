@@ -18,9 +18,8 @@ cardRouter.post(
   (req, res, next) => {
     const { title, text } = req.body;
     let media;
-    if (req.file) {
-      media = req.file.path;
-    }
+    if (req.file) media = req.file.path;
+
     Card.create({
       title,
       media,
