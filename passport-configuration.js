@@ -2,6 +2,8 @@
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const User = require('./models/user');
 const bcryptjs = require('bcryptjs');
@@ -70,4 +72,82 @@ passport.use(
         callback(error);
       });
   })
+);
+
+passport.use(
+  'github',
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: process.env.GITHUB_CALLBACK,
+      scope: 'user:email'
+    },
+    (accessToken, refreshToken, profile, callback) => {
+      const {
+        displayName: name,
+        emails,
+        photos: [{ value: photo } = {}] = []
+      } = profile;
+      const primaryEmail = emails[0].value;
+      User.findOne({ email: primaryEmail })
+        .then((user) => {
+          if (user) {
+            return Promise.resolve(user);
+          } else {
+            return User.create({
+              email: primaryEmail,
+              picture: photo,
+              name,
+              accessToken
+            });
+          }
+        })
+        .then((user) => {
+          callback(null, user);
+        })
+        .catch((error) => {
+          callback(error);
+        });
+    }
+  )
+);
+
+passport.use(
+  'google',
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK,
+      scope: ['email', 'profile']
+    },
+    (accessToken, refreshToken, profile, callback) => {
+      const {
+        displayName: name,
+        emails,
+        photos: [{ value: photo } = {}] = []
+      } = profile;
+      const primaryEmail = emails[0].value;
+      User.findOne({ email: primaryEmail })
+        .then((user) => {
+          if (user) {
+            return Promise.resolve(user);
+          } else {
+            return User.create({
+              email: primaryEmail,
+              picture: photo,
+              name,
+              accessToken
+            });
+          }
+        })
+        .then((user) => {
+          callback(null, user);
+        })
+        .catch((error) => {
+          callback(error);
+        });
+    }
+  )
 );

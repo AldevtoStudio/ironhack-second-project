@@ -30,6 +30,38 @@ router.post(
   })
 );
 
+router.get(
+  '/github',
+  passport.authenticate('github', {
+    successRedirect: '/private',
+    failureRedirect: '/authentication/sign-in'
+  })
+);
+
+router.get(
+  '/github-callback',
+  passport.authenticate('github', {
+    successRedirect: '/private',
+    failureRedirect: '/authentication/sign-in'
+  })
+);
+
+router.get(
+  '/google',
+  passport.authenticate('google', {
+    successRedirect: '/private',
+    failureRedirect: '/authentication/sign-in'
+  })
+);
+
+router.get(
+  '/google-callback',
+  passport.authenticate('google', {
+    successRedirect: '/private',
+    failureRedirect: '/authentication/sign-in'
+  })
+);
+
 router.post('/sign-out', (req, res, next) => {
   req.logout();
   res.redirect('/');
