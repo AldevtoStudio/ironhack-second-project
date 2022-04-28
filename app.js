@@ -13,8 +13,9 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const passportConfigure = require('./passport-configuration.js');
 const baseRouter = require('./routes/base');
 const authenticationRouter = require('./routes/authentication');
-
 const app = express();
+
+//adding comment
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
