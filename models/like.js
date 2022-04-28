@@ -10,8 +10,10 @@ const likeSchema = new mongoose.Schema({
     required: true,
     ref: 'User'
   },
-  value: Number,
-  default: 0.3
+  value: {
+    type: Number,
+    default: 0.3
+  }
 });
 
 const Like = mongoose.model('Like', likeSchema);
