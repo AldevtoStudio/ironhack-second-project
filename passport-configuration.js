@@ -160,9 +160,13 @@ passport.use(
       consumerKey: process.env.TWITTER_CLIENT_ID,
       consumerSecret: process.env.TWITTER_CLIENT_SECRET,
       callbackURL: process.env.TWITTER_CALLBACK,
+      includeEmail: true,
+      includeStatus: false,
+      includeEntities: false,
       scope: ['email', 'profile']
     },
     (accessToken, refreshToken, profile, callback) => {
+      console.log(profile);
       const {
         displayName: name,
         emails,
