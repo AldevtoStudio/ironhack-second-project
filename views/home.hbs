@@ -1,3 +1,23 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-{{! test }}
+{{#if card}}
+  <div>
+    {{#if card.media}} <img src="{{card.media}}" alt="{{card.title}}" /> {{/if}}
+    {{card.title}}
+    {{card.text}}
+    <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
+
+    <form action="/card/{{card._id}}/like" method="POST">
+      <button>Like</button>
+    </form>
+
+    <form action="/card/{{card._id}}/dislike" method="POST">
+      <button>Disike</button>
+    </form>
+
+    <form action="/card/{{card._id}}/ignore" method="POST">
+      <button>Ignore</button>
+    </form>
+
+  </div>
+{{else}}
+  <h3>You have seen all the available cards!</h3>
+{{/if}}
