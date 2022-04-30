@@ -3,6 +3,7 @@
 const express = require('express');
 const Card = require('./../models/card');
 const Feedback = require('../models/feedback');
+const Comment = require('./../models/comment');
 const routeGuard = require('./../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 const cardRouter = new express.Router();
@@ -18,9 +19,7 @@ cardRouter.post(
   (req, res, next) => {
     const { title, text } = req.body;
     let media;
-    console.log('Media: ' + media);
     if (req.file) media = req.file.path;
-
     Card.create({
       title,
       media,
@@ -31,6 +30,9 @@ cardRouter.post(
         res.redirect('/');
       })
       .catch((err) => {
+        if (err.message.includes('Card validation failed')) {
+          err.message = 'PLEASE_FILL_AT_LEAST_ONE_FIELD';
+        }
         next(err);
       });
   }
@@ -114,5 +116,59 @@ cardRouter.post('/:id/ignore', (req, res, next) => {
       next(error);
     });
 });
+
+cardRouter.get('/:id/comments', routeGuard, (req, res, next) => {
+  res.render('card/show-comments.hbs');
+});
+
+cardRouter.get('/:id/comment', routeGuard, (req, res, next) => {
+  res.render('card/comment');
+});
+
+cardRouter.get(
+  '/:id/comment/:commentid/reply',
+  routeGuard,
+  (req, res, next) => {
+    res.render('card/comment-reply');
+  }
+);
+
+cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  const { text } = req.body;
+  Comment.create({ text, user: req.user._id, card: id })
+    .then((comment) => {
+      return Publication.findByIdAndUpdate(id, {
+        $push: { comments: comment }
+      });
+    })
+    .then(() => {
+      res.redirect(`/card/${id}`);
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+cardRouter.post(
+  '/:id/comment/:commentid/reply',
+  routeGuard,
+  (req, res, next) => {
+    const { id } = req.params;
+    const { text } = req.body;
+    Comment.create({ text, user: req.user._id, card: id })
+      .then((comment) => {
+        return Publication.findByIdAndUpdate(id, {
+          $push: { comments: comment }
+        });
+      })
+      .then(() => {
+        res.redirect(`/card/${id}`);
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+);
 
 module.exports = cardRouter;

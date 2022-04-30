@@ -5,14 +5,23 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   title: {
     type: String,
-    maxlength: 80
+    maxlength: 80,
+    required: function () {
+      return !this.text && !this.media;
+    }
   },
   text: {
     type: String,
-    maxlength: 300
+    maxlength: 300,
+    required: function () {
+      return !this.title && !this.media;
+    }
   },
   media: {
-    type: String
+    type: String,
+    required: function () {
+      return !this.text && !this.title;
+    }
   },
   creator: {
     type: mongoose.Types.ObjectId,
@@ -24,10 +33,12 @@ const schema = new mongoose.Schema({
     required: true,
     default: 0
   },
-  comment: {
-    type: [mongoose.Types.ObjectId],
-    ref: 'Comment'
-  },
+  comments: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ],
   totalScore: {
     type: Number,
     default: 0
