@@ -8,4 +8,12 @@
   <a href="/profile/edit">Edit profile</a>
 {{/if}}
 
-{{#each cards}}{{/each}}
+{{#each cards}}
+  {{#if media}}
+    <img src="{{media}}" alt="" />
+  {{/if}}
+
+  <p>{{text}}</p>
+
+  <p>{{title}}</p>
+{{/each}}
