@@ -32,6 +32,7 @@ cardRouter.post(
 );
 
 cardRouter.get('/preview', routeGuard, (req, res, next) => {
+  console.log(cardMedia);
   res.render('card/preview', {
     cardTitle,
     cardText,
