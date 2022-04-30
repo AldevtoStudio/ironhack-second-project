@@ -33,10 +33,12 @@ const schema = new mongoose.Schema({
     required: true,
     default: 0
   },
-  comment: {
-    type: [mongoose.Types.ObjectId],
-    ref: 'Comment'
-  },
+  comments: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ],
   totalScore: {
     type: Number,
     default: 0

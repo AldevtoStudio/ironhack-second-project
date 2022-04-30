@@ -38,7 +38,8 @@ passport.use(
           return User.create({
             name,
             email,
-            passwordHashAndSalt: hash
+            passwordHashAndSalt: hash,
+            lastStrategy: 'local'
           });
         })
         .then((user) => {
@@ -60,6 +61,13 @@ passport.use(
     })
       .then((document) => {
         user = document;
+        if (!user) throw new Error('USER_DOES_NOT_EXIST');
+
+        if (!user.passwordHashAndSalt)
+          throw new Error(
+            `PLEASE_SIGN_IN_WITH_${user.lastStrategy.toUpperCase()}`
+          );
+
         return bcryptjs.compare(password, user.passwordHashAndSalt);
       })
       .then((passwordMatchesHash) => {
@@ -100,7 +108,8 @@ passport.use(
               email: primaryEmail,
               picture: photo,
               name,
-              accessToken
+              accessToken,
+              lastStrategy: 'github'
             });
           }
         })
@@ -139,7 +148,8 @@ passport.use(
               email: primaryEmail,
               picture: photo,
               name,
-              accessToken
+              accessToken,
+              lastStrategy: 'google'
             });
           }
         })
@@ -182,7 +192,8 @@ passport.use(
               email: primaryEmail,
               picture: photo,
               name,
-              accessToken
+              accessToken,
+              lastStrategy: 'twitter'
             });
           }
         })

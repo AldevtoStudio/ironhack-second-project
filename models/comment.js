@@ -18,13 +18,7 @@ const schema = new mongoose.Schema({
     ref: 'Card',
     required: true
   },
-  replies: {
-    type: [String]
-  },
-  value: {
-    type: Number,
-    default: 0.5
-  }
+  replies: [String]
 });
 
 const Comment = mongoose.model('Comment', schema);
