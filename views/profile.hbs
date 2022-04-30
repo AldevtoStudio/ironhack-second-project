@@ -4,14 +4,16 @@
 
 <h2>{{profile.name}}</h2>
 
-
-
 {{#if userProfile}}
   <a href="/profile/edit">Edit profile</a>
 {{/if}}
 
 {{#each cards}}
+  {{#if media}}
+    <img src="{{media}}" alt="" />
+  {{/if}}
 
-{{> cards}}
+  <p>{{text}}</p>
 
+  <p>{{title}}</p>
 {{/each}}
