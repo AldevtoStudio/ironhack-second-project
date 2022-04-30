@@ -13,11 +13,6 @@ const schema = new mongoose.Schema({
     required: true,
     ref: 'User'
   },
-  card: {
-    type: mongoose.Types.ObjectId,
-    ref: 'Card',
-    required: true
-  },
   replies: [String]
 });
 

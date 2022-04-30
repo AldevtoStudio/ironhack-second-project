@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   card: {
     type: mongoose.Types.ObjectId,
-    required: true
+    required: true,
+    ref: 'Card'
   },
   user: {
     type: mongoose.Types.ObjectId,

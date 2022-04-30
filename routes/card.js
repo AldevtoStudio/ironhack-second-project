@@ -8,8 +8,12 @@ const routeGuard = require('./../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 const cardRouter = new express.Router();
 
+let cardTitle;
+let cardText;
+let cardMedia;
+
 cardRouter.get('/create', routeGuard, (req, res) => {
-  res.render('card/create');
+  res.render('card/create', { cardTitle, cardText, cardMedia });
 });
 
 cardRouter.post(
@@ -18,15 +22,39 @@ cardRouter.post(
   fileUpload.single('media'),
   (req, res, next) => {
     const { title, text } = req.body;
-    let media;
-    if (req.file) media = req.file.path;
+    cardTitle = title;
+    cardText = text;
+    if (req.file) {
+      cardMedia = req.file.path;
+    }
+    res.redirect('preview');
+  }
+);
+
+cardRouter.get('/preview', routeGuard, (req, res, next) => {
+  res.render('card/preview', {
+    cardTitle,
+    cardText,
+    cardMedia,
+    pageStyles: [{ style: '/styles/previewcard.css' }]
+  });
+});
+
+cardRouter.post(
+  '/preview',
+  routeGuard,
+  fileUpload.single('media'),
+  (req, res, next) => {
     Card.create({
-      title,
-      media,
-      text,
+      title: cardTitle,
+      media: cardMedia,
+      text: cardText,
       creator: req.user._id
     })
       .then(() => {
+        cardMedia = '';
+        cardText = '';
+        cardTitle = '';
         res.redirect('/');
       })
       .catch((err) => {
@@ -38,7 +66,7 @@ cardRouter.post(
   }
 );
 
-cardRouter.post('/:id/delete', (req, res) => {
+cardRouter.post('/:id/delete', routeGuard, (req, res) => {
   const { id } = req.params;
   Card.findOneAndDelete({ _id: id, creator: req.user._id })
     .then(() => {
@@ -60,7 +88,7 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
       }
     })
     .then(() => {
-      return Feedback.count({ publication: id });
+      return Feedback.count({ card: id });
     })
     .then((feedbacks) => {
       return Card.findByIdAndUpdate(id, { feedbacks, seen: true });
@@ -97,7 +125,7 @@ cardRouter.post('/:id/dislike', routeGuard, (req, res, next) => {
     });
 });
 
-cardRouter.post('/:id/ignore', (req, res, next) => {
+cardRouter.post('/:id/ignore', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Feedback.findOne({ card: id, user: req.user_id })
     .then((ignore) => {
@@ -125,54 +153,22 @@ cardRouter.get('/:id/comments', routeGuard, (req, res, next) => {
   res.render('card/show-comments.hbs');
 });
 
-cardRouter.get('/:id/comment', routeGuard, (req, res, next) => {
-  res.render('card/comment');
-});
-
-cardRouter.get(
-  '/:id/comment/:commentid/reply',
-  routeGuard,
-  (req, res, next) => {
-    res.render('card/comment-reply');
-  }
-);
-
 cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  const { text } = req.body;
-  Comment.create({ text, user: req.user._id, card: id })
+  const { commentText } = req.body;
+  Comment.create({ text: commentText, user: req.user._id })
     .then((comment) => {
-      return Publication.findByIdAndUpdate(id, {
-        $push: { comments: comment }
+      return Card.findByIdAndUpdate(id, {
+        $push: { comments: comment },
+        seen: true
       });
     })
     .then(() => {
-      res.redirect(`/card/${id}`);
+      res.redirect(`/`);
     })
     .catch((error) => {
       next(error);
     });
 });
-
-cardRouter.post(
-  '/:id/comment/:commentid/reply',
-  routeGuard,
-  (req, res, next) => {
-    const { id } = req.params;
-    const { text } = req.body;
-    Comment.create({ text, user: req.user._id, card: id })
-      .then((comment) => {
-        return Publication.findByIdAndUpdate(id, {
-          $push: { comments: comment }
-        });
-      })
-      .then(() => {
-        res.redirect(`/card/${id}`);
-      })
-      .catch((error) => {
-        next(error);
-      });
-  }
-);
 
 module.exports = cardRouter;

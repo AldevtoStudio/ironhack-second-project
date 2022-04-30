@@ -8,6 +8,7 @@
     type="text"
     name="title"
     placeholder="Title..."
+    value="{{cardTitle}}"
   />
   <label for="input-title">Description</label>
   <textarea
@@ -15,7 +16,7 @@
     class="create-input"
     name="text"
     placeholder="Description..."
-  ></textarea>
+  >{{cardText}}</textarea>
   <label for="input-media">Upload a media</label>
   <input
     id="input-media"
@@ -23,7 +24,9 @@
     type="file"
     accept="image/*"
     name="media"
+    value="{{cardMedia}}"
   />
 
-  <button id="create-button">Publish New Post</button>
+  <button id="preview-button">Preview Post</button>
+
 </form>
