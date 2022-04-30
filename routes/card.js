@@ -30,6 +30,9 @@ cardRouter.post(
         res.redirect('/');
       })
       .catch((err) => {
+        if (err.message.includes('Card validation failed')) {
+          err.message = 'PLEASE_FILL_AT_LEAST_ONE_FIELD';
+        }
         next(err);
       });
   }
