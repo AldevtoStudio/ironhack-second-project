@@ -12,7 +12,8 @@ const schema = new mongoose.Schema({
   },
   value: {
     type: Number,
-    enum: [-0.3, 0, 0.3]
+    enum: [-0.3, 0, 0.3],
+    required: true
   }
 });
 
