@@ -21,7 +21,8 @@ const schema = new mongoose.Schema({
   },
   likeCount: {
     type: Number,
-    required: true
+    required: true,
+    default: 0
   },
   comments: [
     {
