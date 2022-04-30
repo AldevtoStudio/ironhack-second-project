@@ -5,6 +5,7 @@ const Card = require('../models/card');
 const routeGuard = require('./../middleware/route-guard');
 const profileRouter = new express.Router();
 const User = require('./../models/user');
+const fileUpload = require('./../middleware/file-upload');
 
 profileRouter.get('/:id', (req, res, next) => {
   const { id } = req.params;
