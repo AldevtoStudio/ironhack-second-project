@@ -9,7 +9,10 @@ router.get('/', (req, res, next) => {
   Card.count({ seen: false })
     .then((count) => {
       var random = Math.floor(Math.random() * count);
-      return Card.findOne({ seen: false }).skip(random);
+      return Card.findOne({ seen: false })
+        .skip(random)
+        .populate('creator')
+        .populate('comments');
     })
     .then((card) => {
       res.render('home', { card });

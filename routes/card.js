@@ -42,7 +42,7 @@ cardRouter.post('/:id/delete', (req, res) => {
   const { id } = req.params;
   Card.findOneAndDelete({ _id: id, creator: req.user._id })
     .then(() => {
-      res.redirect('profile');
+      res.redirect('/profile');
     })
     .catch((error) => {
       next(error);
@@ -66,14 +66,14 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
       return Card.findByIdAndUpdate(id, { feedbacks, seen: true });
     })
     .then(() => {
-      res.end();
+      res.redirect('/');
     })
     .catch((error) => {
       next(error);
     });
 });
 
-cardRouter.post('/:id/unlike', routeGuard, (req, res, next) => {
+cardRouter.post('/:id/dislike', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Feedback.findOne({ card: id, user: req.user._id })
     .then((unlike) => {
@@ -90,7 +90,7 @@ cardRouter.post('/:id/unlike', routeGuard, (req, res, next) => {
       return Card.findByIdAndUpdate(id, { feedbacks, seen: true });
     })
     .then(() => {
-      res.end();
+      res.redirect('/');
     })
     .catch((error) => {
       next(error);
@@ -114,7 +114,7 @@ cardRouter.post('/:id/ignore', (req, res, next) => {
       return Card.findByIdAndUpdate(id, { feedbacks, seen: true });
     })
     .then(() => {
-      res.end();
+      res.redirect('/');
     })
     .catch((error) => {
       next(error);
