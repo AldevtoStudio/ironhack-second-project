@@ -13,7 +13,7 @@
       <a href="/">Home</a>
       {{#if user}}
         <a href="/card/create">New Post</a>
-        <a href="/private">{{user.name}}'s Profile</a>
+        <a href="/profile/{{user._id}}">{{user.name}}'s Profile</a>
         <form action="/auth/sign-out" method="POST">
           <button>Sign Out</button>
         </form>
