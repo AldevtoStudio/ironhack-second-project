@@ -3,6 +3,7 @@
 const express = require('express');
 const Card = require('../models/card');
 const routeGuard = require('./../middleware/route-guard');
+const fileUpload = require('./../middleware/file-upload');
 const profileRouter = new express.Router();
 const User = require('./../models/user');
 
