@@ -110,6 +110,10 @@ cardRouter.post('/:id/ignore', (req, res, next) => {
     });
 });
 
+cardRouter.get('/:id/comments', routeGuard, (req, res, next) => {
+  res.render('card/show-comments.hbs');
+});
+
 cardRouter.get('/:id/comment', routeGuard, (req, res, next) => {
   res.render('card/comment');
 });
