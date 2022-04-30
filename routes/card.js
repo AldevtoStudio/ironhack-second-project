@@ -40,9 +40,13 @@ cardRouter.post(
 
 cardRouter.post('/:id/delete', (req, res) => {
   const { id } = req.params;
-  Card.findOneAndDelete({ _id: id, creator: req.user._id }).then(() => {
-    res.redirect('profile');
-  });
+  Card.findOneAndDelete({ _id: id, creator: req.user._id })
+    .then(() => {
+      res.redirect('profile');
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
