@@ -8,16 +8,17 @@ const fileUpload = require('./../middleware/file-upload');
 const cardRouter = new express.Router();
 
 cardRouter.get('/create', routeGuard, (req, res) => {
-  res.render('/card/create');
+  res.render('card/create');
 });
 
 cardRouter.post(
   '/create',
   routeGuard,
-  fileUpload.single('picture'),
+  fileUpload.single('media'),
   (req, res, next) => {
     const { title, text } = req.body;
     let media;
+    console.log('Media: ' + media);
     if (req.file) media = req.file.path;
 
     Card.create({
