@@ -8,8 +8,12 @@ const routeGuard = require('./../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 const cardRouter = new express.Router();
 
+let cardTitle;
+let cardText;
+let cardMedia;
+
 cardRouter.get('/create', routeGuard, (req, res) => {
-  res.render('card/create');
+  res.render('card/create', { cardTitle, cardText, cardMedia });
 });
 
 cardRouter.post(
@@ -18,15 +22,39 @@ cardRouter.post(
   fileUpload.single('media'),
   (req, res, next) => {
     const { title, text } = req.body;
-    let media;
-    if (req.file) media = req.file.path;
+    cardTitle = title;
+    cardText = text;
+    if (req.file) {
+      cardMedia = req.file.path;
+    }
+    res.redirect('preview');
+  }
+);
+
+cardRouter.get('/preview', routeGuard, (req, res, next) => {
+  res.render('card/preview', {
+    cardTitle,
+    cardText,
+    cardMedia,
+    pageStyles: [{ style: '/styles/previewcard.css' }]
+  });
+});
+
+cardRouter.post(
+  '/preview',
+  routeGuard,
+  fileUpload.single('media'),
+  (req, res, next) => {
     Card.create({
-      title,
-      media,
-      text,
+      title: cardTitle,
+      media: cardMedia,
+      text: cardText,
       creator: req.user._id
     })
       .then(() => {
+        cardMedia = '';
+        cardText = '';
+        cardTitle = '';
         res.redirect('/');
       })
       .catch((err) => {
