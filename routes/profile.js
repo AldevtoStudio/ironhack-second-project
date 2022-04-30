@@ -6,6 +6,7 @@ const routeGuard = require('./../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 const profileRouter = new express.Router();
 const User = require('./../models/user');
+const Feedback = require('../models/feedback');
 
 profileRouter.get('/edit', routeGuard, (req, res) => {
   res.render('profile-edit', { profile: req.user });
@@ -41,7 +42,9 @@ profileRouter.get('/:id', (req, res, next) => {
       if (!user) {
         throw new Error('PROFILE_NOT_FOUND');
       } else {
-        return Card.find({ creator: id }).sort({ createdAt: -1 });
+        return Card.find({ creator: id })
+          .sort({ createdAt: -1 })
+          .populate({ path: 'comments', populate: { path: 'user' } });
       }
     })
     .then((cards) => {
