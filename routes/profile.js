@@ -7,29 +7,7 @@ const fileUpload = require('./../middleware/file-upload');
 const profileRouter = new express.Router();
 const User = require('./../models/user');
 
-profileRouter.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  let user;
-  User.findById(id)
-    .then((profile) => {
-      user = profile;
-      if (!user) {
-        throw new Error('PROFILE_NOT_FOUND');
-      } else {
-        return Card.find({ creator: id }).sort({ createdAt: -1 });
-      }
-    })
-    .then((publications) => {
-      let userPub = req.user && String(req.user._id) === id;
-      res.render('profile', { profile: user, publications, userPub });
-    })
-    .catch((error) => {
-      console.log(error);
-      next(new Error('PROFILE_NOT_FOUND'));
-    });
-});
-
-profileRouter.get('/edit', routeGuard, (req, res, next) => {
+profileRouter.get('/edit', routeGuard, (req, res) => {
   res.render('profile-edit', { profile: req.user });
 });
 
@@ -53,5 +31,27 @@ profileRouter.post(
       });
   }
 );
+
+profileRouter.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  let user;
+  User.findById(id)
+    .then((profile) => {
+      user = profile;
+      if (!user) {
+        throw new Error('PROFILE_NOT_FOUND');
+      } else {
+        return Card.find({ creator: id }).sort({ createdAt: -1 });
+      }
+    })
+    .then((cards) => {
+      let userProfile = req.user && String(req.user._id) === id;
+      res.render('profile', { profile: user, cards, userProfile });
+    })
+    .catch((error) => {
+      console.log(error);
+      next(new Error('PROFILE_NOT_FOUND'));
+    });
+});
 
 module.exports = profileRouter;
