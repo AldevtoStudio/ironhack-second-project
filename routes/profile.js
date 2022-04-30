@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const Card = require('../models/card');
 const routeGuard = require('./../middleware/route-guard');

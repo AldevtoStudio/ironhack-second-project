@@ -30,6 +30,10 @@ const schema = new mongoose.Schema({
   totalScore: {
     type: Number,
     default: 0
+  },
+  seen: {
+    type: Boolean,
+    default: false
   }
 });
 
