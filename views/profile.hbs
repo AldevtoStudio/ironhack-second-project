@@ -1,12 +1,12 @@
-<h2>User profile</h2>
+<div>
+  <img id="profile-img" src="{{profile.picture}}" alt="{{profile.name}}" />
 
-<img src="{{profile.picture}}" alt="{{profile.name}}" />
+  <h2>{{profile.name}}</h2>
 
-<h2>{{profile.name}}</h2>
-
-{{#if userProfile}}
-  <a href="/profile/edit">Edit profile</a>
-{{/if}}
+  {{#if userProfile}}
+    <a href="/profile/edit">Edit profile</a>
+  {{/if}}
+</div>
 
 {{#each cards}}
   {{#if media}}
@@ -16,4 +16,12 @@
   <p>{{text}}</p>
 
   <p>{{title}}</p>
+{{/each}}
+
+<p>Total scores of your cards</p>
+
+{{#each cards}}
+
+  <p>{{totalScore}}</p>
+
 {{/each}}
