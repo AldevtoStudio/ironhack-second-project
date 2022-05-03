@@ -25,18 +25,18 @@ router.get('/', routeGuard, (req, res, next) => {
         .populate('user');
     })
     .then((notifications) => {
-      // let userNotifications = [];
-      // notifications.forEach((notification) => {
-      //   let isOwner = String(notification.card.creator) == String(req.user._id);
-      //   let isSameUser = String(notification.user._id) != String(req.user._id);
+      let userNotifications = [];
+      notifications.forEach((notification) => {
+        let isOwner = String(notification.card.creator) == String(req.user._id);
+        let isSameUser = String(notification.user._id) != String(req.user._id);
 
-      //   if (isSameUser && isOwner) userNotifications.push(notification);
-      // });
+        if (isSameUser && isOwner) userNotifications.push(notification);
+      });
 
       res.render('home', {
-        card: randomCard
-        // notifications: userNotifications,
-        // notificationCount: userNotifications.length
+        card: randomCard,
+        notifications: userNotifications,
+        notificationCount: userNotifications.length
       });
     })
     .catch((error) => {

@@ -2,7 +2,8 @@ Notification count:
 {{notificationCount}}
 {{#each notifications}}
   <p><a href="/profile/{{this.user._id}}">{{this.user.name}}</a>
-    has liked your
+    {{#if comment}}commented{{else}}liked{{/if}}
+    your
     <a href="/meow/{{this.publication._id}}">post</a></p>
 {{/each}}
 
