@@ -4,31 +4,39 @@
   <h2>{{profile.name}}</h2>
 
   {{#if userProfile}}
+
+    {{#each cards}}
+      {{#if media}}
+        <img src="{{media}}" alt="" />
+      {{/if}}
+
+      <p>{{text}}</p>
+
+      <p>{{title}}</p>
+
+      <form method="POST" action="/card/{{_id}}/delete">
+        <button>Delete publication</button>
+      </form>
+
+    {{/each}}
+
+    <p>Total scores of your cards</p>
+
+    {{#each cards}}
+
+      <p>{{totalScore}}</p>
+
+      <h5>Comments:</h5>
+      {{#each comments}}
+        <div>
+          <b>{{this.user.name}}</b>
+          <p>{{this.text}}</p>
+        </div>
+      {{/each}}
+    {{/each}}
+
     <a href="/profile/edit">Edit profile</a>
+
   {{/if}}
+
 </div>
-
-{{#each cards}}
-  {{#if media}}
-    <img src="{{media}}" alt="" />
-  {{/if}}
-
-  <p>{{text}}</p>
-
-  <p>{{title}}</p>
-{{/each}}
-
-<p>Total scores of your cards</p>
-
-{{#each cards}}
-
-  <p>{{totalScore}}</p>
-
-  <h5>Comments:</h5>
-  {{#each comments}}
-    <div>
-      <b>{{this.user.name}}</b>
-      <p>{{this.text}}</p>
-    </div>
-  {{/each}}
-{{/each}}

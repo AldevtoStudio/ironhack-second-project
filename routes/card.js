@@ -66,11 +66,11 @@ cardRouter.post(
   }
 );
 
-cardRouter.post('/:id/delete', routeGuard, (req, res) => {
+cardRouter.post('/:id/delete', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Card.findOneAndDelete({ _id: id, creator: req.user._id })
     .then(() => {
-      res.redirect('/profile');
+      res.redirect(`/profile/${req.user._id}`);
     })
     .catch((error) => {
       next(error);
