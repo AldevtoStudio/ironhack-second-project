@@ -1,5 +1,10 @@
 <div>
-  <img id="profile-img" src="{{profile.picture}}" alt="{{profile.name}}" />
+  {{#if profile.picture}}<img
+      id="profile-img"
+      src="{{profile.picture}}"
+      alt="{{profile.name}}"
+    />
+  {{/if}}
 
   <h2>{{profile.name}}</h2>
 
