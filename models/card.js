@@ -43,10 +43,13 @@ const schema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  seen: {
-    type: Boolean,
-    default: false
-  }
+  seenBy: [
+    {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: 'User'
+    }
+  ]
 });
 
 const Card = mongoose.model('Card', schema);

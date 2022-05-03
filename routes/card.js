@@ -4,6 +4,7 @@ const express = require('express');
 const Card = require('./../models/card');
 const Feedback = require('../models/feedback');
 const Comment = require('./../models/comment');
+const Notification = require('./../models/notification');
 const routeGuard = require('./../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 const cardRouter = new express.Router();
@@ -89,10 +90,26 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
       }
     })
     .then(() => {
-      return Feedback.count({ card: id });
+      return Notification.create({
+        card: id,
+        user: req.user._id,
+        comment: false
+      });
+    })
+    .then(() => {
+      return Feedback.find({ card: id });
     })
     .then((feedbacks) => {
-      return Card.findByIdAndUpdate(id, { feedbacks, seen: true });
+      let cardValue = 0;
+
+      feedbacks.map((feedback) => {
+        cardValue += feedback.value;
+      });
+
+      return Card.findByIdAndUpdate(id, {
+        $push: { seenBy: req.user._id },
+        totalScore: cardValue
+      });
     })
     .then(() => {
       res.redirect('/');
@@ -113,10 +130,24 @@ cardRouter.post('/:id/dislike', routeGuard, (req, res, next) => {
       }
     })
     .then(() => {
-      return Feedback.count({ card: id });
+      return Feedback.find({ card: id });
     })
     .then((feedbacks) => {
-      return Card.findByIdAndUpdate(id, { feedbacks, seen: true });
+      let cardValue = 0;
+
+      feedbacks.map((feedback) => {
+        cardValue += feedback.value;
+      });
+
+      return Card.findByIdAndUpdate(id, {
+        $push: { seenBy: req.user._id },
+        totalScore: cardValue
+      });
+    })
+    .then(() => {
+      return Card.findByIdAndUpdate(id, {
+        $push: { seenBy: req.user._id }
+      });
     })
     .then(() => {
       res.redirect('/');
@@ -137,10 +168,9 @@ cardRouter.post('/:id/ignore', routeGuard, (req, res, next) => {
       }
     })
     .then(() => {
-      return Feedback.count({ card: id });
-    })
-    .then((feedbacks) => {
-      return Card.findByIdAndUpdate(id, { feedbacks, seen: true });
+      return Card.findByIdAndUpdate(id, {
+        $push: { seenBy: req.user._id }
+      });
     })
     .then(() => {
       res.redirect('/');
@@ -161,7 +191,14 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
     .then((comment) => {
       return Card.findByIdAndUpdate(id, {
         $push: { comments: comment },
-        seen: true
+        $push: { seenBy: req.user._id }
+      });
+    })
+    .then(() => {
+      return Notification.create({
+        card: id,
+        user: req.user._id,
+        comment: true
       });
     })
     .then(() => {

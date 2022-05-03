@@ -1,3 +1,11 @@
+Notification count:
+{{notificationCount}}
+{{#each notifications}}
+  <p><a href="/profile/{{this.user._id}}">{{this.user.name}}</a>
+    has liked your
+    <a href="/meow/{{this.publication._id}}">post</a></p>
+{{/each}}
+
 {{#if card}}
   <div>
     {{#if card.media}} <img src="{{card.media}}" alt="{{card.title}}" /> {{/if}}
