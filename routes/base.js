@@ -12,7 +12,7 @@ router.get('/', routeGuard, (req, res, next) => {
   Card.count({ seenBy: { $ne: req.user._id } })
     .then((count) => {
       var random = Math.floor(Math.random() * count);
-      return Card.findOne({ seen: false })
+      return Card.findOne({ seenBy: { $ne: req.user._id } })
         .skip(random)
         .populate('creator')
         .populate('comments');
