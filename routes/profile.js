@@ -55,10 +55,8 @@ profileRouter.get('/:id', (req, res, next) => {
       });
       res.render('profile', { profile: user, cards, userProfile, sum });
     })
-
     .catch((error) => {
-      console.log(error);
-      next(new Error('PROFILE_NOT_FOUND'));
+      next(error);
     });
 });
 
