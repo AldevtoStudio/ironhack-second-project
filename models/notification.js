@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
 
 const notificationSchema = new mongoose.Schema({
-  publication: {
+  card: {
     type: mongoose.Types.ObjectId,
     required: true,
-    ref: 'Publication'
+    ref: 'Card'
   },
   user: {
     type: mongoose.Types.ObjectId,
     required: true,
     ref: 'User'
   },
-  type: {
-    type: String,
+  read: {
+    type: Boolean,
+    default: false
+  },
+  comment: {
+    type: Boolean,
     required: true
   }
 });

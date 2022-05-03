@@ -49,11 +49,14 @@ profileRouter.get('/:id', (req, res, next) => {
     })
     .then((cards) => {
       let userProfile = req.user && String(req.user._id) === id;
-      res.render('profile', { profile: user, cards, userProfile });
+      let sum = 0;
+      cards.map((card) => {
+        sum += card.totalScore;
+      });
+      res.render('profile', { profile: user, cards, userProfile, sum });
     })
     .catch((error) => {
-      console.log(error);
-      next(new Error('PROFILE_NOT_FOUND'));
+      next(error);
     });
 });
 
