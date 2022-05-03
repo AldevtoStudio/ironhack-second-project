@@ -22,4 +22,8 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/leaderboard', (req, res, next) => {
+  const id = req.user;
+});
+
 module.exports = router;
