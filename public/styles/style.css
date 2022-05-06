@@ -190,7 +190,6 @@ label {
   transform: scale(1);
 }
 
-<<<<<<< HEAD
 .error-container {
   background-color: rgba(211, 41, 41, 0.8);
   color: white;
@@ -199,7 +198,8 @@ label {
   border-radius: 6px;
   display: flex;
   justify-content: center;
-=======
+}
+
 .leaderboard-container {
   min-height: 475px;
   width: 30rem;
@@ -320,7 +320,6 @@ label {
 
 .rank .num {
   margin: 0 !important;
->>>>>>> dbecb7e1e08e63f347c8642df5a6f568e1e7cf98
 }
 
 /*# sourceMappingURL=style.css.map */
