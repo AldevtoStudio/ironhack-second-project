@@ -190,4 +190,14 @@ label {
   transform: scale(1);
 }
 
+.error-container {
+  background-color: rgba(211, 41, 41, 0.8);
+  color: white;
+  font-size: 20px;
+  border: 2px solid #ec7474;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=style.css.map */

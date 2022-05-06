@@ -14,7 +14,12 @@ let cardText;
 let cardMedia;
 
 cardRouter.get('/create', routeGuard, (req, res) => {
-  res.render('card/create', { cardTitle, cardText, cardMedia });
+  res.render('card/create', {
+    cardTitle,
+    cardText,
+    cardMedia,
+    error: { message: err.error }
+  });
 });
 
 cardRouter.post(
@@ -28,25 +33,7 @@ cardRouter.post(
     if (req.file) {
       cardMedia = req.file.path;
     }
-    res.redirect('preview');
-  }
-);
 
-cardRouter.get('/preview', routeGuard, (req, res, next) => {
-  console.log(cardMedia);
-  res.render('card/preview', {
-    cardTitle,
-    cardText,
-    cardMedia,
-    pageStyles: [{ style: '/styles/previewcard.css' }]
-  });
-});
-
-cardRouter.post(
-  '/preview',
-  routeGuard,
-  fileUpload.single('media'),
-  (req, res, next) => {
     Card.create({
       title: cardTitle,
       media: cardMedia,
@@ -61,7 +48,15 @@ cardRouter.post(
       })
       .catch((err) => {
         if (err.message.includes('Card validation failed')) {
-          err.message = 'PLEASE_FILL_AT_LEAST_ONE_FIELD';
+          err.error = 'Please, fill at least one field.';
+
+          res.status(404).render('card/create', {
+            cardTitle,
+            cardText,
+            cardMedia,
+            error: { message: err.error }
+          });
+          return;
         }
         next(err);
       });

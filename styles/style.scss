@@ -191,3 +191,13 @@ label {
 .card:hover:after {
   transform: scale(1);
 }
+
+.error-container {
+  background-color: rgba($color: #d3292991, $alpha: 0.8);
+  color: white;
+  font-size: 20px;
+  border: 2px solid rgb(236, 116, 116);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+}
