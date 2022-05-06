@@ -14,6 +14,7 @@ const passportConfigure = require('./passport-configuration.js');
 const baseRouter = require('./routes/base');
 const cardRouter = require('./routes/card');
 const profileRouter = require('./routes/profile');
+const leaderboardRouter = require('./routes/leaderboard');
 const authenticationRouter = require('./routes/authentication');
 const app = express();
 
@@ -57,6 +58,7 @@ app.use(passport.session());
 app.use(bindUserToViewLocals);
 
 app.use('/', baseRouter);
+app.use('/leaderboard', leaderboardRouter);
 app.use('/auth', authenticationRouter);
 app.use('/card', cardRouter);
 app.use('/profile', profileRouter);
