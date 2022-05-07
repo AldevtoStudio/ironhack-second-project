@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Calibri';
+}
+body {
+  padding-bottom: 3rem;
+}
+.container {
+  max-width: 93.5rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+img {
+  display: block;
+}
+
+.profile {
+  padding: 5rem 0;
+
+  .profile-image {
+    float: left;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+
+    #profile-img {
+      border-radius: 50%;
+    }
+  }
+}

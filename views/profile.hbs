@@ -1,12 +1,31 @@
-<div>
-  {{#if profile.picture}}<img
+<div class="container">
+
+		<div class="profile">
+
+			<div class="profile-image">
+  {{#if profile.picture}}
+  <img
       id="profile-img"
       src="{{profile.picture}}"
       alt="{{profile.name}}"
     />
+      </div>
   {{/if}}
+<div class="profile-user-settings">
+  <h2 id="profile-user-name">{{profile.name}}</h2>
 
-  <h2>{{profile.name}}</h2>
+   <a href="/profile/edit"><button class="btn profile-edit-btn"><span >Edit profile</span></button>
+   </a>
+
+
+<div class="profile-stats">
+
+<p>{{sum}} scores</p>
+
+</div>
+</div>
+    </div>
+</div>
 
   {{#if userProfile}}
 
@@ -15,21 +34,12 @@
         <img src="{{media}}" alt="" />
       {{/if}}
 
+            <p>{{title}}</p>
+
+
       <p>{{text}}</p>
 
-      <p>{{title}}</p>
-
-      <form method="POST" action="/card/{{_id}}/delete">
-        <button>Delete publication</button>
-      </form>
-
-    {{/each}}
-
-    <p>Total scores of your cards</p>
-    <p>{{sum}}</p>
-
-    {{#each cards}}
-
+   
       <h5>Comments:</h5>
       {{#each comments}}
         <div>
@@ -37,10 +47,17 @@
           <p>{{this.text}}</p>
         </div>
       {{/each}}
+    
+
+
+      <form method="POST" action="/card/{{_id}}/delete">
+        <button>Delete publication</button>
+      </form>
+
     {{/each}}
 
-    <a href="/profile/edit">Edit profile</a>
-
+    
+ 
   {{/if}}
 
 </div>
