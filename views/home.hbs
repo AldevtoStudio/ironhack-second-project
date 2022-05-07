@@ -8,29 +8,49 @@ Notification count:
 {{/each}}
 
 {{#if card}}
-  <div>
+  <div class="cardPublication">
     {{#if card.media}} <img src="{{card.media}}" alt="{{card.title}}" /> {{/if}}
     {{card.title}}
     {{card.text}}
     <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
 
-    <form action="/card/{{card._id}}/like" method="POST">
-      <button>Like</button>
-    </form>
+    <div class="feedbackBtns">
+      <form action="/card/{{card._id}}/like" method="POST">
+        <button><img
+            class="feedbackIcon"
+            src="/images/home/likeIcon.png"
+            alt="Like Icon"
+          /></button>
+      </form>
 
-    <form action="/card/{{card._id}}/dislike" method="POST">
-      <button>Disike</button>
-    </form>
+      <form action="/card/{{card._id}}/dislike" method="POST">
+        <button><img
+            class="feedbackIcon"
+            src="/images/home/dislikeIcon.png"
+            alt="Like Icon"
+          /></button>
+      </form>
 
-    <form action="/card/{{card._id}}/ignore" method="POST">
-      <button>Ignore</button>
-    </form>
+      <form action="/card/{{card._id}}/ignore" method="POST">
+        <button><img
+            class="feedbackIcon"
+            src="/images/home/ignoreIcon.png"
+            alt="Like Icon"
+          /></button>
+      </form>
+    </div>
 
-    <form action="/card/{{card._id}}/comment" method="POST">
+    <a href=""><img
+        class="commentIcon"
+        src="/images/home/commentIcon.png"
+        alt="Comment Icon"
+      /></a>
+
+    {{!-- <form action="/card/{{card._id}}/comment" method="POST">
       <label for="input-comment"></label>
       <input type="text" name="commentText" id="input-comment" />
       <button>Comment</button>
-    </form>
+    </form> --}}
 
   </div>
 {{else}}

@@ -9,7 +9,7 @@ const User = require('./../models/user');
 const Feedback = require('../models/feedback');
 
 profileRouter.get('/edit', routeGuard, (req, res) => {
-  res.render('profile-edit', { profile: req.user });
+  res.render('profile/edit', { profile: req.user });
 });
 
 profileRouter.post(
@@ -53,7 +53,7 @@ profileRouter.get('/:id', (req, res, next) => {
       cards.map((card) => {
         sum += card.totalScore;
       });
-      res.render('profile', { profile: user, cards, userProfile, sum });
+      res.render('profile/single', { profile: user, cards, userProfile, sum });
     })
     .catch((error) => {
       next(error);
