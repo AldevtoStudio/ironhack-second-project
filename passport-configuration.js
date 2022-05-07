@@ -61,7 +61,7 @@ passport.use(
     })
       .then((document) => {
         user = document;
-        if (!user) throw new Error('USER_DOES_NOT_EXIST');
+        if (!user) throw new Error('User does not exist.');
 
         if (!user.passwordHashAndSalt)
           throw new Error(
@@ -74,7 +74,7 @@ passport.use(
         if (passwordMatchesHash) {
           callback(null, user);
         } else {
-          callback(new Error('WRONG_PASSWORD'));
+          callback(new Error('Wrong password.'));
         }
       })
       .catch((error) => {

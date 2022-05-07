@@ -1,10 +1,5 @@
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
     <title>{{title}}</title>
     <link rel="stylesheet" href="/styles/style.css" />
     <link
@@ -30,7 +25,12 @@
         <a href="/auth/sign-up">Sign Up</a>
       {{/if}}
     </nav>
+
     {{{body}}}
-    <script src="/scripts/script.js"></script>
+    {{#if error.message}}
+      <div class="error-container">
+        <p>{{error.message}}</p>
+      </div>
+    {{/if}}
   </body>
 </html>

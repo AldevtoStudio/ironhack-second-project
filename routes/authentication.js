@@ -14,7 +14,7 @@ router.post(
   '/sign-up',
   passport.authenticate('local-sign-up', {
     successRedirect: '/',
-    failureRedirect: '/sign-up'
+    failureRedirect: '/auth/sign-up'
   })
 );
 
@@ -26,7 +26,7 @@ router.post(
   '/sign-in',
   passport.authenticate('local-sign-in', {
     successRedirect: '/',
-    failureRedirect: '/sign-in'
+    failureRedirect: '/auth/sign-in'
   })
 );
 
