@@ -1,0 +1,29 @@
+.cardPublication {
+  border: 1px solid white;
+  border-radius: 10px;
+  height: 80%;
+  width: 60%;
+  margin: 0 auto;
+  box-shadow: 0 0 5em -1em black;
+  padding: 1em;
+}
+
+.cardPublication button {
+  border: none;
+}
+
+.cardPublication .feedbackIcon {
+  width: 64px;
+}
+
+.cardPublication .commentIcon {
+  width: 64px;
+}
+
+.cardPublication .feedbackBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=home.css.map */

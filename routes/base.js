@@ -38,7 +38,8 @@ router.get('/', routeGuard, (req, res, next) => {
       res.render('home', {
         card: randomCard,
         notifications: userNotifications,
-        notificationCount: userNotifications.length
+        notificationCount: userNotifications.length,
+        pageStyles: [{ style: '/styles/home.css' }]
       });
     })
     .catch((error) => {
