@@ -1,5 +1,3 @@
-// Leaderboard
-
 .leaderboard-container {
   min-height: 475px;
   width: 30rem;
@@ -121,3 +119,5 @@
 .rank .num {
   margin: 0 !important;
 }
+
+/*# sourceMappingURL=leaderboard.css.map */
