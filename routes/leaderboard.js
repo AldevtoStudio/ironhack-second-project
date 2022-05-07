@@ -11,7 +11,6 @@ leaderboardRouter.get('/', (req, res, next) => {
   let user2 = {};
   let user3 = {};
   let currentUSer = {};
-
   User.find()
     .sort({ totalScore: -1 })
     .then((users) => {
@@ -34,14 +33,14 @@ leaderboardRouter.get('/', (req, res, next) => {
           user3.picture = value.picture;
         }
       });
-      console.log(user1);
-      console.log(user2);
-      console.log(user3);
+      return Card.find().sort({ totalScore: -1 }).limit(10).populate('creator');
+    })
+    .then((cards) => {
       res.render('leaderboard', {
-        users,
         user1,
         user2,
         user3,
+        cards,
         pageStyles: [{ style: '/styles/leaderboard.css' }]
       });
     })

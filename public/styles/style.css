@@ -38,16 +38,14 @@ nav button:first-child {
 
 h1,
 h2,
-h3,
-p {
+h3 {
   margin: 0;
   line-height: inherit;
 }
 
 h1:not(:last-child),
 h2:not(:last-child),
-h3:not(:last-child),
-p:not(:last-child) {
+h3:not(:last-child) {
   margin-bottom: 1rem;
 }
 
