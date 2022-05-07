@@ -7,6 +7,7 @@ const Comment = require('./../models/comment');
 const Notification = require('./../models/notification');
 const routeGuard = require('./../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
+const User = require('../models/user');
 const cardRouter = new express.Router();
 
 let cardTitle;
@@ -40,13 +41,14 @@ cardRouter.post(
       creator: req.user._id
     })
       .then(() => {
-        cardMedia = '';
-        cardText = '';
-        cardTitle = '';
+        // cardMedia = '';
+        // cardText = '';
+        // cardTitle = '';
         res.redirect('/');
       })
       .catch((err) => {
-        if (err.message.includes('Card validation failed')) {
+        console.log(err);
+        if (err.message.includes('required')) {
           err.error = 'Please, fill at least one field.';
           res.status(404).render('card/create', {
             cardTitle,
@@ -99,12 +101,25 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
         cardValue += feedback.value;
       });
 
-      return Card.findByIdAndUpdate(id, {
-        $push: { seenBy: req.user._id },
-        totalScore: cardValue
-      });
+      return Card.findByIdAndUpdate(
+        id,
+        {
+          $push: { seenBy: req.user._id },
+          totalScore: cardValue
+        },
+        { new: true }
+      );
     })
-    .then(() => {
+    .then((card) => {
+      return User.findByIdAndUpdate(
+        card.creator,
+        {
+          $push: { totalScore: card.totalScore }
+        },
+        { new: true }
+      );
+    })
+    .then((user) => {
       res.redirect('/');
     })
     .catch((error) => {
@@ -132,14 +147,18 @@ cardRouter.post('/:id/dislike', routeGuard, (req, res, next) => {
         cardValue += feedback.value;
       });
 
-      return Card.findByIdAndUpdate(id, {
-        $push: { seenBy: req.user._id },
-        totalScore: cardValue
-      });
+      return Card.findByIdAndUpdate(
+        id,
+        {
+          $push: { seenBy: req.user._id },
+          totalScore: cardValue
+        },
+        { new: true }
+      );
     })
-    .then(() => {
-      return Card.findByIdAndUpdate(id, {
-        $push: { seenBy: req.user._id }
+    .then((card) => {
+      User.findByIdAndUpdate(card.creator, {
+        $push: { totalScore: card.totalScore }
       });
     })
     .then(() => {

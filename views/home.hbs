@@ -9,20 +9,13 @@ Notification count:
 
 {{#if card}}
   <div class="cardPublication">
-    {{#if card.media}} <img src="{{card.media}}" alt="{{card.title}}" /> {{/if}}
-    {{card.title}}
-    {{card.text}}
-    <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
+    {{#if card.media}}
+      <img class="media" src="{{card.media}}" alt="{{card.title}}" />
+    {{/if}}
+    <h5>{{card.title}}</h5>
+    <p>{{card.text}}</p>
 
     <div class="feedbackBtns">
-      <form action="/card/{{card._id}}/like" method="POST">
-        <button><img
-            class="feedbackIcon"
-            src="/images/home/likeIcon.png"
-            alt="Like Icon"
-          /></button>
-      </form>
-
       <form action="/card/{{card._id}}/dislike" method="POST">
         <button><img
             class="feedbackIcon"
@@ -38,6 +31,14 @@ Notification count:
             alt="Like Icon"
           /></button>
       </form>
+
+      <form action="/card/{{card._id}}/like" method="POST">
+        <button><img
+            class="feedbackIcon"
+            src="/images/home/likeIcon.png"
+            alt="Like Icon"
+          /></button>
+      </form>
     </div>
 
     <a href=""><img
@@ -46,6 +47,10 @@ Notification count:
         alt="Comment Icon"
       /></a>
 
+    <a
+      class="name"
+      href="/profile/{{card.creator._id}}"
+    >{{card.creator.name}}</a>
     {{!-- <form action="/card/{{card._id}}/comment" method="POST">
       <label for="input-comment"></label>
       <input type="text" name="commentText" id="input-comment" />
