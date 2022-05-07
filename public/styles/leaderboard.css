@@ -6,12 +6,30 @@
   background: #02383c;
 }
 
-.photo {
+.photo-second {
   width: 50px;
   background: #fff;
   border-radius: 50%;
-  border: 5px solid cyan;
-  box-shadow: 0 0 20px cyan;
+  border: 5px solid #b5b5bd;
+  box-shadow: 0 0 20px #b5b5bd;
+  margin: 1rem 0;
+}
+
+.photo-third {
+  width: 50px;
+  background: #fff;
+  border-radius: 50%;
+  border: 5px solid #9c5221;
+  box-shadow: 0 0 20px #9c5221;
+  margin: 1rem 0;
+}
+
+.photo-first {
+  width: 50px;
+  background: #fff;
+  border-radius: 50%;
+  border: 5px solid #ffd700;
+  box-shadow: 0 0 20px #ffd700;
   margin: 1rem 0;
 }
 

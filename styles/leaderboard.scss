@@ -1,4 +1,7 @@
 // Leaderboard
+$goldborder: #ffd700;
+$silverborder: #b5b5bd;
+$bronzeborder: #9c5221;
 
 .leaderboard-container {
   min-height: 475px;
@@ -8,12 +11,30 @@
   background: #02383c;
 }
 
-.photo {
+.photo-second {
   width: 50px;
   background: #fff;
   border-radius: 50%;
-  border: 5px solid cyan;
-  box-shadow: 0 0 20px cyan;
+  border: 5px solid $silverborder;
+  box-shadow: 0 0 20px $silverborder;
+  margin: 1rem 0;
+}
+
+.photo-third {
+  width: 50px;
+  background: #fff;
+  border-radius: 50%;
+  border: 5px solid $bronzeborder;
+  box-shadow: 0 0 20px $bronzeborder;
+  margin: 1rem 0;
+}
+
+.photo-first {
+  width: 50px;
+  background: #fff;
+  border-radius: 50%;
+  border: 5px solid $goldborder;
+  box-shadow: 0 0 20px $goldborder;
   margin: 1rem 0;
 }
 

@@ -7,9 +7,9 @@ const leaderboardRouter = new express.Router();
 const User = require('./../models/user');
 
 leaderboardRouter.get('/', (req, res, next) => {
-  let firstUser = {};
-  let secondUser = {};
-  let thirdUser = {};
+  let user1 = {};
+  let user2 = {};
+  let user3 = {};
   let currentUSer = {};
 
   User.find()
@@ -19,23 +19,29 @@ leaderboardRouter.get('/', (req, res, next) => {
         console.table('user' + value);
         console.log(index);
         if (index === 0) {
-          firstUser.name = value.name;
-          firstUser.score = value.totalScore;
+          user1.name = value.name;
+          user1.score = value.totalScore;
+          user1.picture = value.picture;
         }
         if (index === 1) {
-          secondUser.name = value.name;
-          secondUser.score = value.totalScore;
+          user2.name = value.name;
+          user2.score = value.totalScore;
+          user2.picture = value.picture;
         }
         if (index === 2) {
-          thirdUser.name = value.name;
-          thirdUser.score = value.totalScore;
+          user3.name = value.name;
+          user3.score = value.totalScore;
+          user3.picture = value.picture;
         }
       });
-      console.log(firstUser);
-      console.log(secondUser);
-      console.log(thirdUser);
+      console.log(user1);
+      console.log(user2);
+      console.log(user3);
       res.render('leaderboard', {
         users,
+        user1,
+        user2,
+        user3,
         pageStyles: [{ style: '/styles/leaderboard.css' }]
       });
     })

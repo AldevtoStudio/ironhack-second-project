@@ -49,7 +49,6 @@ cardRouter.post(
       .catch((err) => {
         if (err.message.includes('Card validation failed')) {
           err.error = 'Please, fill at least one field.';
-
           res.status(404).render('card/create', {
             cardTitle,
             cardText,
