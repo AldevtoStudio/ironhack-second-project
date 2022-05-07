@@ -53,7 +53,13 @@ profileRouter.get('/:id', (req, res, next) => {
       cards.map((card) => {
         sum += card.totalScore;
       });
-      res.render('profile/single', { profile: user, cards, userProfile, sum });
+      res.render('profile/single', {
+        profile: user,
+        cards,
+        userProfile,
+        sum,
+        pageStyles: [{ style: '/styles/profile.css' }]
+      });
     })
     .catch((error) => {
       next(error);

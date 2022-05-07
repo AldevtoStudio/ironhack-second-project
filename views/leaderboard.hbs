@@ -1,41 +1,63 @@
-<h1>leaderbard</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Score</th>
-  </tr>
-    {{#each users}}
-      <tr>
-        <th>{{name}}</th>
-        <th>{{totalScore}}</th>
-      </tr>
-    {{/each}}
-  <tr>
-</table>
-
 <div class="leaderboard-container one">
   <div class="profile">
     <div class="person second">
-      <div class="num">2</div>
-      <i class="fas fa-caret-up"></i>
-      <img src="/images/leaderboard.png" alt="photo" class="photo">
-      <p class="link">@dorisklien</p>
-      <p class="points">8023</p>
+      <img src="{{user2.picture}}" alt="photo" class="photo-second" />
+      <p class="link">{{user2.name}}</p>
+      <p class="points">#2 - {{user2.score}} score</p>
     </div>
     <div class="person first">
-      <div class="num">1</div>
-      <i class="fas fa-crown"></i>
-      <img src="/images/leaderboard.png" alt="" class="photo main">
-      <p class="link">@sher234</p>
-      <p class="points">8122</p>
+      <img src="{{user1.picture}}" alt="" class="photo-first" />
+      {{!-- <p class="link">{{user1.name}}</p> --}}
+      <p class="link">MantllaBigfoot</p>
+      <p class="points">#1 - {{user1.score}} score</p>
     </div>
     <div class="person third">
-      <div class="num">3</div>
-      <i class="fas fa-caret-up"></i>
-      <img src="/images/leaderboard.png" alt="" class="photo">
-      <p class="link">@lord_0980</p>
-      <p class="points">7884</p>
+      <img src="{{user3.picture}}" alt="" class="photo-third" />
+      <p class="link">{{user3.name}}</p>
+      <p class="points">#3 - {{user3.score}} score</p>
     </div>
   </div>
+</div>
+
+<div class="leaderboard-card-container">
+  <section class="leaderboard-cards">
+    {{#each cards}}
+      <div class="cardPublication">
+        {{#if media}}
+          <div>
+            <img src="{{media}}" alt="image" />
+          </div>
+        {{/if}}
+        {{#if title}}
+          <div>
+            <h5>{{title}}</h5>
+          </div>
+        {{/if}}
+        {{#if text}}
+          <div>
+            <p class="card-description">flweqflwqhfkhwfhlwefhqlfhewhkejfwqef v
+              werwerwer werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
+              ewfwefwefwefwefwefwefwefwefwefhqlfhewhkejfwqef v werwerwer
+              werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
+              ewfwefwefwefwefwefwefwefwefwefhqlfhewhkejfwqef v werwerwer
+              werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
+              ewfwefwefwefwefwefwefwefwef
+            </p>
+          </div>
+        {{/if}}
+        <div class="feedback-container">
+          <span>{{creator.name}}</span>
+          <p>
+            <img src="/images/leaderboard/greyLikeIcon.png" alt="" />
+            {{likeCount}}</p>
+          <p>
+            <img
+              id="last-img"
+              src="/images/leaderboard/greyCommentIcon.png"
+              alt=""
+            />{{comments.length}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </section>
 </div>
