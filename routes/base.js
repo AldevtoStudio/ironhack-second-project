@@ -27,6 +27,8 @@ router.get('/', routeGuard, (req, res, next) => {
     .then((notifications) => {
       let userNotifications = [];
       notifications.forEach((notification) => {
+        if (!notification.card.creator) return;
+
         let isOwner = String(notification.card.creator) == String(req.user._id);
         let isSameUser = String(notification.user._id) != String(req.user._id);
 
