@@ -17,8 +17,7 @@ cardRouter.get('/create', routeGuard, (req, res) => {
   res.render('card/create', {
     cardTitle,
     cardText,
-    cardMedia,
-    error: { message: err.error }
+    cardMedia
   });
 });
 
