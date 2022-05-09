@@ -6,22 +6,15 @@ const schema = new mongoose.Schema({
   title: {
     type: String,
     maxlength: 80,
-    required: function () {
-      return !this.text && !this.media;
-    }
+    required: [true, 'Title is required.']
   },
   text: {
     type: String,
     maxlength: 300,
-    required: function () {
-      return !this.title && !this.media;
-    }
+    required: [true, 'Description is required.']
   },
   media: {
-    type: String,
-    required: function () {
-      return !this.text && !this.title;
-    }
+    type: String
   },
   creator: {
     type: mongoose.Types.ObjectId,

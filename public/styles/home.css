@@ -1,70 +1,105 @@
-.cardPublication {
-  border: 1px solid white;
-  border-radius: 10px;
-  height: 80%;
-  width: 60%;
+.homeCard {
   margin: 0 auto;
-  box-shadow: 0 0 5em -1em black;
-  padding: 1em;
-}
-
-.cardPublication .media {
-  width: 100%;
-  height: 35%;
-  max-height: 40%;
-  max-width: 100%;
+  background-color: #fff;
   border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 500px;
+  height: 800px;
+  padding: 1em;
+  overflow: visible;
+}
+
+.homeCard .cardMedia img {
+  width: 100%;
+  height: 250px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
-.cardPublication button {
-  border: none;
-}
-
-.cardPublication .feedbackIcon {
-  width: 64px;
-}
-
-.cardPublication .commentIcon {
-  width: 64px;
-  position: absolute;
-  bottom: 40px;
-  right: 685px;
-}
-
-.cardPublication .feedbackBtns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 6em;
-  left: 0px;
-  right: 0px;
-}
-
-.cardPublication .feedbackBtns form {
-  margin: 1em;
-}
-
-.cardPublication .feedbackBtns button {
+.homeCard .feedbackIcon {
+  width: 74px;
   cursor: pointer;
 }
 
-.cardPublication .name {
-  font-size: 20px;
-  font-weight: bold;
-  color: #bdbdbd;
-  position: absolute;
-  bottom: 75px;
-  left: 745px;
+.homeCard form {
+  margin: 0;
 }
 
-.cardPublication h5 {
+.homeCard .commentIcon {
+  width: 74px;
+}
+
+.homeCard .cardBodyFull {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px;
+  min-height: 250px;
+}
+
+.homeCard .cardBodyTitleDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px;
+  margin-bottom: 10.9em;
+  min-height: 446px;
+}
+
+.homeCard .cardFeedback {
+  display: flex;
+  justify-content: center;
+}
+
+.homeCard .cardFeedback button {
+  border: none;
+}
+
+.homeCard .commentFeedback {
+  position: relative;
+  bottom: 85px;
+  left: 450px;
+}
+
+.homeCard .creatorName {
+  font-size: 24px;
+  font-weight: bold;
+  color: #bdbdbd;
+  position: relative;
+  bottom: 20px;
+  right: -10px;
+}
+
+.homeCard .cardInfo {
+  display: flex;
+  position: relative;
+  color: #bdbdbd;
+  font-weight: bold;
+  bottom: 65px;
+  left: 345px;
+}
+
+.homeCard .cardInfo div {
+  display: flex;
+  align-self: center;
+  margin-left: 1em;
+}
+
+.homeCard .cardInfo img {
+  width: 26px;
+  align-self: center;
+  margin-right: 0.2em;
+}
+
+.homeCard h5 {
   font-size: 38px;
   margin: 0;
 }
 
-.cardPublication p {
+.homeCard p {
   font-size: 22px;
   margin: 0;
   max-width: 100%;

@@ -64,9 +64,7 @@ passport.use(
         if (!user) throw new Error('User does not exist.');
 
         if (!user.passwordHashAndSalt)
-          throw new Error(
-            `PLEASE_SIGN_IN_WITH_${user.lastStrategy.toUpperCase()}`
-          );
+          throw new Error(`Please, sign in with ${user.lastStrategy}`);
 
         return bcryptjs.compare(password, user.passwordHashAndSalt);
       })

@@ -1,61 +1,96 @@
-.cardPublication {
-  border: 1px solid rgb(255, 255, 255);
-  border-radius: 10px;
-  height: 80%;
-  width: 60%;
+.homeCard {
   margin: 0 auto;
-  box-shadow: 0 0 5em -1em black;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 500px;
+  height: 800px;
   padding: 1em;
+  overflow: visible;
 
-  .media {
+  .cardMedia img {
     width: 100%;
-    height: 35%;
-    max-height: 40%;
-    max-width: 100%;
-    border-radius: 10px;
+    height: 250px;
     object-fit: cover;
-  }
-
-  button {
-    border: none;
+    border-radius: 10px;
   }
 
   .feedbackIcon {
-    width: 64px;
+    width: 74px;
+    cursor: pointer;
+  }
+
+  form {
+    margin: 0;
   }
 
   .commentIcon {
-    width: 64px;
-    position: absolute;
-    bottom: 40px;
-    right: 685px;
+    width: 74px;
   }
 
-  .feedbackBtns {
+  .cardBodyFull {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    min-height: 250px;
+  }
+
+  .cardBodyTitleDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 10.9em;
+    min-height: 446px;
+  }
+
+  .cardFeedback {
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 6em;
-    left: 0px;
-    right: 0px;
-
-    form {
-      margin: 1em;
-    }
 
     button {
-      cursor: pointer;
+      border: none;
     }
   }
 
-  .name {
-    font-size: 20px;
+  .commentFeedback {
+    position: relative;
+    bottom: 85px;
+    left: 450px;
+  }
+
+  .creatorName {
+    font-size: 24px;
     font-weight: bold;
     color: #bdbdbd;
-    position: absolute;
-    bottom: 75px;
-    left: 745px;
+    position: relative;
+    bottom: 20px;
+    right: -10px;
+  }
+
+  .cardInfo {
+    display: flex;
+    position: relative;
+    color: #bdbdbd;
+    font-weight: bold;
+    bottom: 65px;
+    left: 345px;
+
+    div {
+      display: flex;
+      align-self: center;
+      margin-left: 1em;
+    }
+
+    img {
+      width: 26px;
+      align-self: center;
+      margin-right: 0.2em;
+    }
   }
 
   h5 {

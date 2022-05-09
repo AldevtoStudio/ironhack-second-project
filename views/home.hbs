@@ -8,14 +8,24 @@ Notification count:
 {{/each}}
 
 {{#if card}}
-  <div class="cardPublication">
+  <div class="homeCard">
+    <div class="cardMedia">
+      {{#if card.media}}
+        <img src="{{card.media}}" alt="{{card.title}}" />
+      {{/if}}
+    </div>
     {{#if card.media}}
-      <img class="media" src="{{card.media}}" alt="{{card.title}}" />
+      <div class="cardBodyFull">
+        <h5>{{card.title}}</h5>
+        <p>{{card.text}}</p>
+      </div>
+    {{else}}
+      <div class="cardBodyTitleDesc">
+        <h5>{{card.title}}</h5>
+        <p>{{card.text}}</p>
+      </div>
     {{/if}}
-    <h5>{{card.title}}</h5>
-    <p>{{card.text}}</p>
-
-    <div class="feedbackBtns">
+    <div class="cardFeedback">
       <form action="/card/{{card._id}}/dislike" method="POST">
         <button><img
             class="feedbackIcon"
@@ -40,23 +50,31 @@ Notification count:
           /></button>
       </form>
     </div>
-
-    <a href=""><img
-        class="commentIcon"
-        src="/images/home/commentIcon.png"
-        alt="Comment Icon"
-      /></a>
-
-    <a
-      class="name"
-      href="/profile/{{card.creator._id}}"
-    >{{card.creator.name}}</a>
+    <div class="creatorName">
+      <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
+    </div>
+    <div class="cardInfo">
+      <div>
+        <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
+        <p>{{card.likeCount}}</p>
+      </div>
+      <div>
+        <img src="/images/home/greyCommentIcon.png" alt="Grey Like Icon" />
+        <p>{{card.comments.length}}</p>
+      </div>
+    </div>
+    <div class="commentFeedback">
+      <a href=""><img
+          class="commentIcon"
+          src="/images/home/commentIcon.png"
+          alt="Comment Icon"
+        /></a>
+    </div>
     {{!-- <form action="/card/{{card._id}}/comment" method="POST">
       <label for="input-comment"></label>
       <input type="text" name="commentText" id="input-comment" />
       <button>Comment</button>
     </form> --}}
-
   </div>
 {{else}}
   <h3>You have seen all the available cards!</h3>
