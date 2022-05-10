@@ -6,9 +6,17 @@
       <p class="points">#2 - {{user2.score}} score</p>
     </div>
     <div class="person first">
-      <img src="{{user1.picture}}" alt="" class="photo-first" />
-      {{!-- <p class="link">{{user1.name}}</p> --}}
-      <p class="linkLeaderBoard">MantllaBigfoot</p>
+      <div class="parent-first-place">
+        <img src="{{user1.picture}}" alt="" class="photo-first" />
+
+        <img
+          id="crown-image"
+          src="/images/leaderboard/icons8-crown-48.png"
+          alt=""
+        />
+      </div>
+      <p class="linkLeaderBoard">{{user1.name}}</p>
+      {{! <p class="linkLeaderBoard">MantllaBigfoot</p> }}
       <p class="points">#1 - {{user1.score}} score</p>
     </div>
     <div class="person third">
