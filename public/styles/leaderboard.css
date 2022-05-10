@@ -1,9 +1,8 @@
 .leaderboard-container {
   font-family: 'Arial', sans-serif;
   min-height: 475px;
-  width: 30rem;
+  width: 40rem;
   margin: 0 auto;
-  border-radius: 15px;
 }
 
 .photo-second {
@@ -24,6 +23,12 @@
   margin: 1rem 0;
 }
 
+.parent-first-place {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 .photo-first {
   width: 60px;
   background: #fff;
@@ -31,6 +36,15 @@
   border: 3px solid #ffd700;
   box-shadow: 0 0 10px #ffd700;
   margin: 1rem 0;
+  position: relative;
+}
+
+#crown-image {
+  position: absolute;
+  top: -7px;
+  left: 0px;
+  width: 30px;
+  transform: rotate(-20deg);
 }
 
 .profile {
@@ -81,6 +95,21 @@
 @media screen and (min-width: 40em) {
   .leaderboard-card {
     max-width: calc(50% - 1em);
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .profile :nth-child(1) {
+    order: 2;
+  }
+  .profile :nth-child(2) {
+    order: 1;
+  }
+  .profile :nth-child(3) {
+    order: 3;
+  }
+  .profile {
+    flex-direction: column;
   }
 }
 

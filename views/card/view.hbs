@@ -1,1 +1,96 @@
-<h1>View Card</h1>
+{{#if card}}
+  <div class="scene scene--card">
+    <div class="cardFlip">
+      <div class="card__face card__face--front">
+        <div class="singleCard">
+          <div class="cardMedia">
+            {{#if card.media}}
+              <img src="{{card.media}}" alt="{{card.title}}" />
+            {{/if}}
+          </div>
+          {{#if card.media}}
+            <div class="cardBodyFull">
+              <h5>{{card.title}}</h5>
+              <p>{{card.text}}</p>
+            </div>
+          {{else}}
+            <div class="cardBodyTitleDesc">
+              <h5>{{card.title}}</h5>
+              <p>{{card.text}}</p>
+            </div>
+          {{/if}}
+          <div class="creatorName">
+            <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
+          </div>
+          <div class="cardInfo">
+            <div>
+              <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
+              <p>{{card.likeCount}}</p>
+            </div>
+            <div>
+              <img
+                src="/images/home/greyCommentIcon.png"
+                alt="Grey Like Icon"
+              />
+              <p>{{card.comments.length}}</p>
+            </div>
+          </div>
+          <div class="commentFeedback">
+            <img
+              class="commentIcon"
+              src="/images/home/commentIcon.png"
+              alt="Comment Icon"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="card__face card__face--back">
+        <div class="singleCard">
+          <div class="commentFrom">
+            <form action="/card/{{card._id}}/comment" method="POST">
+              <input
+                type="text"
+                name="text"
+                placeholder="Write your comment here"
+              />
+              <button>Send Comment</button>
+            </form>
+          </div>
+          <div class="commentList">
+            {{#each card.comments}}
+              <div class="comment">
+                <a href="/profile/{{this.user._id}}">
+                  {{this.user.name}}</a>
+                <p>{{this.text}}</p>
+              </div>
+            {{/each}}
+          </div>
+          <div class="creatorName">
+            <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
+          </div>
+          <div class="cardInfo">
+            <div>
+              <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
+              <p>{{card.likeCount}}</p>
+            </div>
+            <div>
+              <img
+                src="/images/home/greyCommentIcon.png"
+                alt="Grey Like Icon"
+              />
+              <p>{{card.comments.length}}</p>
+            </div>
+          </div>
+          <div class="commentFeedback">
+            <img
+              class="commentIcon"
+              src="/images/home/commentIcon.png"
+              alt="Comment Icon"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

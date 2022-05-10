@@ -19,8 +19,36 @@ cardRouter.get('/create', routeGuard, (req, res) => {
   res.render('card/create', {
     cardTitle,
     cardText,
-    cardMedia
+    cardMedia,
+    pageStyles: [{ style: '/styles/create-card.css' }]
   });
+});
+
+cardRouter.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  Card.findById(id)
+    .populate('creator')
+    .populate({ path: 'comments', populate: { path: 'user' } })
+    .then((card) => {
+      if (!card) {
+        res.render('card/view', {
+          error: { message: 'This card does not exist!' }
+        });
+        return;
+      }
+
+      card.comments.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+
+      res.render('card/view', {
+        card,
+        pageStyles: [{ style: '/styles/singleCard.css' }]
+      });
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 cardRouter.post(
@@ -195,19 +223,18 @@ cardRouter.post('/:id/ignore', routeGuard, (req, res, next) => {
     });
 });
 
-cardRouter.get('/:id/comments', routeGuard, (req, res, next) => {
-  res.render('card/show-comments.hbs');
-});
-
 cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  const { commentText } = req.body;
-  Comment.create({ text: commentText, user: req.user._id })
+  const { text } = req.body;
+  Comment.create({ text, user: req.user._id })
     .then((comment) => {
-      return Card.findByIdAndUpdate(id, {
-        $push: { comments: comment },
-        $push: { seenBy: req.user._id }
-      });
+      return Card.findByIdAndUpdate(
+        id,
+        {
+          $push: { comments: comment._id, seenBy: req.user._id }
+        },
+        { new: true }
+      );
     })
     .then(() => {
       return Notification.create({
@@ -217,7 +244,7 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
       });
     })
     .then(() => {
-      res.redirect(`/`);
+      res.redirect(`back`);
     })
     .catch((error) => {
       next(error);

@@ -44,7 +44,8 @@ leaderboardRouter.get('/', (req, res, next) => {
         pageStyles: [
           { style: '/styles/leaderboard.css' },
           { style: '/styles/card.css' }
-        ]
+        ],
+        pageStyles: [{ style: '/styles/card-create.css' }]
       });
     })
     .catch((err) => {
