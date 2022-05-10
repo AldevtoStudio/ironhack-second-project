@@ -36,6 +36,10 @@ cardRouter.get('/:id', (req, res, next) => {
         return;
       }
 
+      card.comments.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+
       res.render('card/view', {
         card,
         pageStyles: [{ style: '/styles/singleCard.css' }]
