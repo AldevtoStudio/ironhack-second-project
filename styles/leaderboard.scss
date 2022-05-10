@@ -8,9 +8,8 @@ $bronzeborder: #9c5221;
 .leaderboard-container {
   font-family: 'Arial', sans-serif;
   min-height: 475px;
-  width: 30rem;
+  width: 40rem;
   margin: 0 auto;
-  border-radius: 15px;
 }
 
 .photo-second {
@@ -38,6 +37,11 @@ $bronzeborder: #9c5221;
   border: 3px solid $goldborder;
   box-shadow: 0 0 10px $goldborder;
   margin: 1rem 0;
+  position: relative;
+
+  #crown-image {
+    position: absolute;
+  }
 }
 
 .profile {
@@ -91,6 +95,22 @@ $bronzeborder: #9c5221;
 @media screen and (min-width: 40em) {
   .leaderboard-card {
     max-width: calc(50% - 1em);
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .profile :nth-child(1) {
+    order: 2;
+  }
+  .profile :nth-child(2) {
+    order: 1;
+  }
+  .profile :nth-child(3) {
+    order: 3;
+  }
+
+  .profile {
+    flex-direction: column;
   }
 }
 
