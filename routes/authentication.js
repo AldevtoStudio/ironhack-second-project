@@ -7,7 +7,7 @@ const passport = require('passport');
 const router = new Router();
 
 router.get('/sign-up', (req, res, next) => {
-  res.render('sign-up');
+  res.render('sign-up', { pageStyles: [{ style: '/styles/sign-up.css' }] });
 });
 
 router.post(

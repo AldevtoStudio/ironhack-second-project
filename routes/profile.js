@@ -58,7 +58,10 @@ profileRouter.get('/:id', (req, res, next) => {
         cards,
         userProfile,
         sum,
-        pageStyles: [{ style: '/styles/profile.css' }]
+        pageStyles: [
+          { style: '/styles/profile.css' },
+          { style: '/styles/card.css' }
+        ]
       });
     })
     .catch((error) => {

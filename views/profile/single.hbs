@@ -9,55 +9,84 @@
       src="{{profile.picture}}"
       alt="{{profile.name}}"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+     <a href="/profile/edit"><button id="edit" <i class="far fa-edit"></i></button>
+   </a>
       </div>
   {{/if}}
 <div class="profile-user-settings">
   <h2 id="profile-user-name">{{profile.name}}</h2>
 
-   <a href="/profile/edit"><button class="btn profile-edit-btn"><span >Edit profile</span></button>
-   </a>
-
-
-<div class="profile-stats">
-
-<p>{{sum}} scores</p>
-
+  
+</div>
+  
+<div id="profile-stats">
+  <ul>
+   <li id="scores">{{sum}} scores</li>
+   </ul>
+   </div> 
 </div>
 </div>
-    </div>
 </div>
-
-  {{#if userProfile}}
-
-    {{#each cards}}
-      {{#if media}}
-        <img src="{{media}}" alt="" />
-      {{/if}}
-
-            <p>{{title}}</p>
-
-
-      <p>{{text}}</p>
-
-   
-      <h5>Comments:</h5>
-      {{#each comments}}
-        <div>
-          <b>{{this.user.name}}</b>
-          <p>{{this.text}}</p>
+  
+{{#each cards}}
+      <div class="cardPublication">
+        {{#if media}}
+          <div>
+            <img src="{{media}}" alt="image" />
+          </div>
+        {{/if}}
+        {{#if title}}
+          <div>
+            <h5>{{title}}</h5>
+          </div>
+        {{/if}}
+        {{#if text}}
+          <div>
+            <p class="card-description">flweqflwqhfkhwfhlwefhqlfhewhkejfwqef v
+              werwerwer werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
+              ewfwefwefwefwefwefwefwefwefwefhqlfhewhkejfwqef v werwerwer
+              werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
+              ewfwefwefwefwefwefwefwefwefwefhqlfhewhkejfwqef v werwerwer
+              werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
+              ewfwefwefwefwefwefwefwefwef
+            </p>
+          </div>
+        {{/if}}
+        <div class="feedback-container">
+          <span>{{creator.name}}</span>
+          <p>
+            <img src="/images/leaderboard/greyLikeIcon.png" alt="" />
+            {{likeCount}}</p>
+          <p>
+            <img
+              id="last-img"
+              src="/images/leaderboard/greyCommentIcon.png"
+              alt=""
+            />{{comments.length}}</p>
         </div>
-      {{/each}}
-    
-
-
+      </div>
+      
       <form method="POST" action="/card/{{_id}}/delete">
         <button>Delete publication</button>
       </form>
 
+
     {{/each}}
+ 
+
+
+
+
+
+
+
+    
+
 
     
  
-  {{/if}}
+  
 
 </div>

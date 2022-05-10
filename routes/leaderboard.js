@@ -41,7 +41,10 @@ leaderboardRouter.get('/', (req, res, next) => {
         user2,
         user3,
         cards,
-        pageStyles: [{ style: '/styles/leaderboard.css' }]
+        pageStyles: [
+          { style: '/styles/leaderboard.css' },
+          { style: '/styles/card.css' }
+        ]
       });
     })
     .catch((err) => {
