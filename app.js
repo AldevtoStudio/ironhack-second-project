@@ -16,10 +16,11 @@ const cardRouter = require('./routes/card');
 const profileRouter = require('./routes/profile');
 const leaderboardRouter = require('./routes/leaderboard');
 const authenticationRouter = require('./routes/authentication');
+const hbs = require('hbs');
+const notificationsMiddleware = require('./middleware/notifications');
 const app = express();
 
-//adding comment
-
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
@@ -56,6 +57,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bindUserToViewLocals);
+app.use(notificationsMiddleware);
 
 app.use('/', baseRouter);
 app.use('/leaderboard', leaderboardRouter);

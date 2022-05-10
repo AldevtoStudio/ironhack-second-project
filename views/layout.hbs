@@ -9,28 +9,88 @@
     {{#each pageStyles}}
       <link rel="stylesheet" href={{style}} />
     {{/each}}
+    <script src="/scripts/dropdown.js" defer></script>
   </head>
   <body>
-    <nav>
-      <a href="/">Home</a>
-      <a id="ref-leaderboard" href="/leaderboard">Leaderboard</a>
-      {{#if user}}
-        <a href="/card/create">New Post</a>
-        <a href="/profile/{{user._id}}">{{user.name}}'s Profile</a>
-        <form action="/auth/sign-out" method="POST">
-          <button>Sign Out</button>
-        </form>
-      {{else}}
-        <a href="/auth/sign-in">Sign In</a>
-        <a href="/auth/sign-up">Sign Up</a>
-      {{/if}}
-    </nav>
+    <header>
+      <nav>
+        <a class="appName" href="/">Colshare</a>
+        {{#if user}}
+          <div class="links">
+            <a href="/leaderboard">
+              <img
+                src="/images/home/leaderBoardIcon.png"
+                alt="Leaderboard Icon"
+              />
+            </a>
+            <a href="/card/create">
+              <img src="/images/home/newCardIcon.png" alt="Create Card Icon" />
+            </a>
+            <div class="userDropdowns">
+              <div class="dropdown" id="data-dropdown">
+              <div class="profileMenu">
+                <button class="link" id="data-dropdown-button">
+                  <img src="{{user.picture}}" alt="{{user.name}}" />
+                </button>
+                <div class="dropdown-menu">
+                  <a href="/profile/{{user._id}}">
+                    Profile
+                  </a>
+                  <form action="/auth/sign-out" method="POST">
+                    <button>Sign Out</button>
+                  </form>
+                </div>
+              </div>
+              </div>
+              <div {{#if notifications}} class="dropdown" {{/if}} id="data-dropdown">
+              <div class="notificationsMenu">
+                <button class="link" id="data-dropdown-button">
+                  <img src="/images/home/notificationIcon.png" alt="Notification Icon" />
+                  {{#if notifications}}
+                    <p class="notificationNumber">{{notifications.length}}</p>
+                  {{/if}}
+                </button>
+                <div class="dropdown-menu" id="notifications">
+                  {{#each notifications}}
+                    <div class="notificationContainer">
+                      <a href="/profile/{{this.user._id}}">{{user.name}}</a>
+                       {{#if comment}}commented{{else}}liked{{/if}} your
+                       <a href="/card/{{this.card._id}}">post</a>
+                       <form action="/card/{{this.card._id}}/notification/{{this.user._id}}/delete" method="POST">
+                        <button>Mark as read</button>
+                       </form>
+                    </div>
+                  {{/each}}
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        {{else}}
+          <div class="links">
+            <a href="/leaderboard">
+              <img
+                src="/images/home/leaderBoardIcon.png"
+                alt="Leaderboard Icon"
+              />
+            </a>
+            <div class="login-register">
+              <a href="/auth/sign-in">Sign In</a>
+              |
+              <a href="/auth/sign-up">Sign Up</a>
+            </div>
+          </div>
+        {{/if}}
+      </nav>
+    </header>
 
-    {{{body}}}
-    {{#if error.message}}
-      <div class="error-container">
-        <p>{{error.message}}</p>
-      </div>
-    {{/if}}
+    <main>
+      {{{body}}}
+      {{#if error.message}}
+        <div class="error-container">
+          <p>{{error.message}}</p>
+        </div>
+      {{/if}}
+    </main>
   </body>
 </html>

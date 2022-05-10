@@ -6,19 +6,26 @@ const schema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: true
+    required: [true, 'Name is required.']
   },
   email: {
     type: String,
-    required: true,
+    required: [true, 'Email is required.'],
+    unique: [
+      true,
+      'Email already registered, <a href="/auth/sign-in">sign in</a> instead'
+    ],
     lowercase: true,
     trim: true
   },
   passwordHashAndSalt: {
     type: String,
-    required: function () {
-      return !this.accessToken;
-    }
+    required: [
+      function () {
+        return !this.accessToken;
+      },
+      'Password is required'
+    ]
   },
   accessToken: {
     type: String

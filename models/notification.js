@@ -11,10 +11,6 @@ const notificationSchema = new mongoose.Schema({
     required: true,
     ref: 'User'
   },
-  read: {
-    type: Boolean,
-    default: false
-  },
   comment: {
     type: Boolean,
     required: true

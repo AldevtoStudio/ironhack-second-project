@@ -5,12 +5,12 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   title: {
     type: String,
-    maxlength: 80,
+    maxlength: [18, 'Title max length is 18.'],
     required: [true, 'Title is required.']
   },
   text: {
     type: String,
-    maxlength: 300,
+    maxlength: [246, 'Description max length is 246.'],
     required: [true, 'Description is required.']
   },
   media: {

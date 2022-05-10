@@ -1,6 +1,7 @@
 'use strict';
 
 const passport = require('passport');
+const mongoose = require('mongoose');
 const LocalStrategy = require('passport-local').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;

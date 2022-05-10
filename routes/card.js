@@ -48,7 +48,6 @@ cardRouter.post(
         res.redirect('/');
       })
       .catch((err) => {
-        console.log(err);
         if (err instanceof mongoose.Error.ValidationError) {
           res.status(404).render('card/create', {
             cardTitle,
@@ -224,5 +223,20 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
+cardRouter.post(
+  '/:id/notification/:user/delete',
+  routeGuard,
+  (req, res, next) => {
+    const { id, user } = req.params;
+    Notification.findOneAndDelete({ card: id, user })
+      .then(() => {
+        res.redirect('back');
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+);
 
 module.exports = cardRouter;
