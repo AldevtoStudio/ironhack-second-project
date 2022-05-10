@@ -9,7 +9,7 @@ body {
   position: relative;
   border-radius: 5px;
 }
-.sign-up {
+.sign-in {
   background: url(http://cdn.paper4pc.com/images/grunge-texture-wallpaper-5.jpg)
     no-repeat center top;
   background-color: transparent;
@@ -30,7 +30,7 @@ body {
   float: right;
   width: 50%;
   margin: auto;
-  padding: 130px 50px;
+  padding: 100px 50px;
   margin-top: 12px;
 
   .auth span {
@@ -65,28 +65,7 @@ body {
     color: white;
   }
   .google {
-    background-color: #ee5e41;
+    background-color: #eb6258;
     color: white;
-  }
-  .signup-form input {
-    width: 100%;
-    border: 1px solid #dddddd;
-    padding: 0.7em;
-    margin: 0.6em 0;
-    border-radius: 0;
-    margin-bottom: 15px;
-  }
-  .signup-form {
-    margin-bottom: 30px;
-  }
-  .signform {
-    background-color: rgb(94, 4, 4);
-    padding-bottom: 40px;
-    padding-top: 35px;
-    margin: 0 auto;
-    margin-top: auto;
-  }
-  .submit {
-    background-color: rgb(24, 60, 89);
   }
 }

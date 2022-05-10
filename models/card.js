@@ -5,23 +5,16 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   title: {
     type: String,
-    maxlength: 80,
-    required: function () {
-      return !this.text && !this.media;
-    }
+    maxlength: [18, 'Title max length is 18.'],
+    required: [true, 'Title is required.']
   },
   text: {
     type: String,
-    maxlength: 300,
-    required: function () {
-      return !this.title && !this.media;
-    }
+    maxlength: [246, 'Description max length is 246.'],
+    required: [true, 'Description is required.']
   },
   media: {
-    type: String,
-    required: function () {
-      return !this.text && !this.title;
-    }
+    type: String
   },
   creator: {
     type: mongoose.Types.ObjectId,

@@ -1,6 +1,7 @@
 'use strict';
 
 const passport = require('passport');
+const mongoose = require('mongoose');
 const LocalStrategy = require('passport-local').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -64,9 +65,7 @@ passport.use(
         if (!user) throw new Error('User does not exist.');
 
         if (!user.passwordHashAndSalt)
-          throw new Error(
-            `PLEASE_SIGN_IN_WITH_${user.lastStrategy.toUpperCase()}`
-          );
+          throw new Error(`Please, sign in with ${user.lastStrategy}`);
 
         return bcryptjs.compare(password, user.passwordHashAndSalt);
       })

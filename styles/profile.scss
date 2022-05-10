@@ -88,13 +88,15 @@ body {
       border: 2px solid rgb(75, 127, 205);
       margin-right: 35px;
       top: 0;
+
       margin-bottom: 60px;
-      left: 120px;
+      left: -3px;
       align-items: center;
       justify-content: center;
       display: flex;
       background: rgb(229, 222, 222);
       color: rgb(72, 147, 246);
+      position: relative;
     }
   }
 }

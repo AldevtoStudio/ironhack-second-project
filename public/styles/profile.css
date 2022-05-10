@@ -101,12 +101,13 @@ body {
   margin-right: 35px;
   top: 0;
   margin-bottom: 60px;
-  left: 120px;
+  left: -3px;
   align-items: center;
   justify-content: center;
   display: flex;
   background: #e5dede;
   color: #4893f6;
+  position: relative;
 }
 
 /*# sourceMappingURL=profile.css.map */

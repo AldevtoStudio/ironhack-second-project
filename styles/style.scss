@@ -10,10 +10,14 @@ $grey: hsl(0, 0, 90%);
 }
 
 body {
+  margin: 0;
+}
+
+main {
   max-width: 52em;
   padding: 0 1em;
   margin: 0 auto;
-  font-family: sans-serif;
+  font-family: 'Calibri';
   font-family: $font-sans;
   line-height: 2;
 }
@@ -25,16 +29,171 @@ a {
 
 nav {
   display: flex;
-  a,
+  background-color: #4367ec;
+  color: white;
+  height: 64px;
+  align-items: center;
+  margin-bottom: 3em;
+  justify-content: center;
+
+  .userDropdowns {
+    display: flex;
+    background-color: #6493f8;
+    border-radius: 25px;
+    padding: 0.2em 0;
+  }
+
+  .login-register {
+    display: flex;
+    color: #4367ec;
+    font-weight: bold;
+    font-family: $font-sans;
+    background-color: white;
+    border-radius: 25px;
+    padding: 0.4em 0;
+
+    a {
+      margin: 0 0.4em;
+    }
+
+    a:hover {
+      color: #a152e2;
+    }
+  }
+
   button {
-    padding: 1em 0;
-    border: 0;
-    &:not(:last-child) {
-      margin-right: 1em;
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 32px;
+    cursor: pointer;
+  }
+
+  img {
+    width: 48px;
+  }
+
+  .notificationsMenu {
+    display: flex;
+    align-items: center;
+    height: 32px;
+
+    img {
+      width: 48px;
+      margin-left: 0.5em;
+      position: relative;
+      top: -8px;
     }
-    &:first-child {
-      margin-right: auto;
+
+    .notificationNumber {
+      font-family: $font-sans;
+      font-size: 16px;
+      position: relative;
+      top: -36px;
+      left: 32px;
+      background-color: rgb(228, 35, 67);
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      border-radius: 25px;
+      margin: 0;
     }
+  }
+
+  .profileMenu {
+    display: flex;
+    align-items: center;
+    height: 32px;
+
+    img {
+      width: 30px;
+      border-radius: 25px;
+      box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.1);
+      margin-left: 0.6em;
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    font-family: $font-sans;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.25rem);
+    width: 125px;
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    color: black;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+
+    .notificationContainer {
+      text-align: end;
+      font-family: $font-sans;
+      background-color: rgb(235, 235, 235);
+      border-radius: 0.25rem;
+      width: 100%;
+      padding: 0.6em;
+
+      form {
+        display: inline;
+        background-color: #6493f8;
+        border-radius: 0.25rem;
+        color: white;
+        padding: 0.2em;
+      }
+
+      a {
+        color: #6493f8;
+      }
+    }
+  }
+
+  .dropdown-menu#notifications {
+    min-width: 225px;
+    max-width: 500px;
+  }
+
+  .dropdown.active > .profileMenu > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .dropdown.active > .notificationsMenu > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .appName {
+    font-size: 58px;
+    font-family: 'Brush Script MT';
+    padding-bottom: 4px;
+    margin: 0 auto;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1em;
+    margin-right: 1em;
   }
 }
 

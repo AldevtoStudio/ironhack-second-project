@@ -1,25 +1,59 @@
-<div class="container">
+<section class="sign-up">
+  <div class="signform">
+    <div class="row">
 
-  <form action="/auth/sign-up" method="POST">
-    <label for="input-name">Name</label>
-    <input type="text" id="input-name" name="name" placeholder="Your Name" />
-    <label for="input-email">Email</label>
-    <input
-      type="email"
-      id="input-email"
-      name="email"
-      placeholder="Your Email"
-    />
-    <label for="input-password">Password</label>
-    <input
-      type="password"
-      name="password"
-      id="input-password"
-      placeholder="A Strong Password"
-    />
-    <button>Sign Up</button>
-  </form>
-</div>
-<a href="/auth/github" class="btn">Sign In with GitHub</a>
-<a href="/auth/google" class="btn">Sign In with Google</a>
-<a href="/auth/twitter" class="btn">Sign In with Twitter</a>
+      
+      <script
+        src="https://kit.fontawesome.com/64feb954eb.js"
+        crossorigin="anonymous"
+      ></script>
+
+      <div class="auth">
+        <h4 class="info"  style="float:none;text-align:center;margin-right:5px;font-size: 0.9em;">Sign in with :</h4>
+        <a href="/auth/github" class="git btn"><i
+            class="fa-brands fa-github"
+          ></i><span>Sign in with Git</span></a>
+        <a href="/auth/twitter" class="twitter btn">
+          <i class="fa-brands fa-twitter"></i>
+          Login with Twitter
+        </a>
+        <a href="/auth/google" class="google btn">
+          <i class="fa fa-google fa-fw"></i>
+          Login with Google+
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="headit">
+        <h4>Create an account</h4>
+      </div>
+
+<div class="form">
+      <form class="signup-form" action="/auth/sign-up" method="POST">
+        <label for="input-name">Name</label>
+        <input
+          type="text"
+          id="input-name"
+          name="name"
+          placeholder="Your Name"
+        />
+        <label for="input-email">Email</label>
+        <input
+          type="email"
+          id="input-email"
+          name="email"
+          placeholder="Your Email"
+        />
+        <label for="input-password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="input-password"
+          placeholder="A Strong Password"
+        />
+        <button class="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</section>

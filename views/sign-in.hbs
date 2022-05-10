@@ -1,16 +1,41 @@
-<form action="/auth/sign-in" method="POST">
-  <label for="input-email">Email</label>
-  <input type="email" id="input-email" name="email" placeholder="Your Email" />
-  <label for="input-password">Password</label>
-  <input
-    type="password"
-    name="password"
-    id="input-password"
-    placeholder="A Strong Password"
-  />
-  <button>Sign In</button>
-</form>
+<section class="sign-in">
+  <div class="container">
+    <h4 style="text-align:center">Sign in with :</h4>
+    <script
+      src="https://kit.fontawesome.com/64feb954eb.js"
+      crossorigin="anonymous"
+    ></script>
 
-<a href="/auth/github" class="btn">Sign In with GitHub</a>
-<a href="/auth/google" class="btn">Sign In with Google</a>
-<a href="/auth/twitter" class="btn">Sign In with Twitter</a>
+    <div class="auth">
+      <a href="/auth/github" class="git btn"><i
+          class="fa-brands fa-github"
+        ></i><span>Sign in with Git</span></a>
+      <a href="/auth/twitter" class="twitter btn">
+        <i class="fa-brands fa-twitter"></i>
+        Login with Twitter
+      </a>
+      <a href="/auth/google" class="google btn">
+        <i class="fa fa-google fa-fw"></i>
+        Login with Google+
+      </a>
+    </div>
+  </div>
+
+  <form action="/auth/sign-in" method="POST">
+    <label for="input-email">Email</label>
+    <input
+      type="email"
+      id="input-email"
+      name="email"
+      placeholder="Your Email"
+    />
+    <label for="input-password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="input-password"
+      placeholder="A Strong Password"
+    />
+    <button>Sign In</button>
+  </form>
+</section>
