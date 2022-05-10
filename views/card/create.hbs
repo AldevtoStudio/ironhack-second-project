@@ -1,31 +1,63 @@
-<h1>Create a new Post</h1>
+<div class="create-card-container">
+  <form method="POST" enctype="multipart/form-data">
+    <div class="create-card-image-container">
+      <div>
+        <input
+          onchange="document.getElementById('create-card-preview').src = window.URL.createObjectURL(this.files[0])"
+          type="file"
+          name="media"
+          id="file-1"
+          class="inputfile inputfile-1 hidden"
+          accept="image/*"
+          value="{{cardMedia}}"
+        />
+        <label for="file-1"><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="17"
+            class="create-card-img-label"
+            viewBox="0 0 20 17"
+          ><path
+              d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"
+            ></path></svg>
+          <span>Choose a file&hellip;</span></label>
+      </div>
+      <div class="create-card-preview-container">
+        <img
+          id="create-card-preview"
+          alt="test"
+          src="https://cdn.sstatic.net/Img/unified/sprites.svg?v=e5e58ae7df45"
+        />
+      </div>
 
-<form method="POST" enctype="multipart/form-data">
-  <label for="input-title">Title</label>
-  <input
-    id="input-title"
-    class="create-input"
-    type="text"
-    name="title"
-    placeholder="Title..."
-    value="{{cardTitle}}"
-  />
-  <label for="input-title">Description</label>
-  <textarea
-    id="input-description"
-    class="create-input"
-    name="text"
-    placeholder="Description..."
-  >{{cardText}}</textarea>
-  <label for="input-media">Upload a media</label>
-  <input
-    id="input-media"
-    class="create-input"
-    type="file"
-    accept="image/*"
-    name="media"
-    value="{{cardMedia}}"
-  />
+    </div>
+    <div class="create-card-title-container">
+      <input
+        id="input-title"
+        class="create-input"
+        type="text"
+        name="title"
+        placeholder="Title..."
+        value="{{cardTitle}}"
+      />
+    </div>
+    <div class="create-card-description-container">
+      <textarea
+        id="input-description"
+        class="create-input"
+        name="text"
+        placeholder="Description..."
+      >{{cardText}}</textarea>
+    </div>
 
-  <button id="create-button">Create Post</button>
-</form>
+    <button id="create-button"></button>
+  </form>
+</div>
+
+<script src="/scripts/dragAndDrop.js" defer></script>
+{{! <script>
+  var loadFile = function(event) { var output =
+  document.getElementById('output'); output.src =
+  URL.createObjectURL(event.target.files[0]); output.onload = function() {
+  URL.revokeObjectURL(output.src) // free memory } };
+</script> }}

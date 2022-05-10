@@ -19,7 +19,8 @@ cardRouter.get('/create', routeGuard, (req, res) => {
   res.render('card/create', {
     cardTitle,
     cardText,
-    cardMedia
+    cardMedia,
+    pageStyles: [{ style: '/styles/create-card.css' }]
   });
 });
 
