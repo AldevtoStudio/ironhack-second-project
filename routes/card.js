@@ -1,12 +1,14 @@
 'use strict';
 
 const express = require('express');
+const mongoose = require('mongoose');
 const Card = require('./../models/card');
 const Feedback = require('../models/feedback');
 const Comment = require('./../models/comment');
 const Notification = require('./../models/notification');
 const routeGuard = require('./../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
+const User = require('../models/user');
 const cardRouter = new express.Router();
 
 let cardTitle;
@@ -40,19 +42,18 @@ cardRouter.post(
       creator: req.user._id
     })
       .then(() => {
-        cardMedia = '';
-        cardText = '';
-        cardTitle = '';
+        // cardMedia = '';
+        // cardText = '';
+        // cardTitle = '';
         res.redirect('/');
       })
       .catch((err) => {
-        if (err.message.includes('Card validation failed')) {
-          err.error = 'Please, fill at least one field.';
+        if (err instanceof mongoose.Error.ValidationError) {
           res.status(404).render('card/create', {
             cardTitle,
             cardText,
             cardMedia,
-            error: { message: err.error }
+            error: { message: err.message }
           });
           return;
         }
@@ -94,17 +95,34 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
     })
     .then((feedbacks) => {
       let cardValue = 0;
+      let likes = 0;
 
       feedbacks.map((feedback) => {
         cardValue += feedback.value;
+
+        if (feedback.value === 0.3) likes++;
       });
 
-      return Card.findByIdAndUpdate(id, {
-        $push: { seenBy: req.user._id },
-        totalScore: cardValue
-      });
+      return Card.findByIdAndUpdate(
+        id,
+        {
+          $push: { seenBy: req.user._id },
+          totalScore: cardValue,
+          likeCount: likes
+        },
+        { new: true }
+      );
     })
-    .then(() => {
+    .then((card) => {
+      return User.findByIdAndUpdate(
+        card.creator,
+        {
+          $push: { totalScore: card.totalScore }
+        },
+        { new: true }
+      );
+    })
+    .then((user) => {
       res.redirect('/');
     })
     .catch((error) => {
@@ -132,14 +150,18 @@ cardRouter.post('/:id/dislike', routeGuard, (req, res, next) => {
         cardValue += feedback.value;
       });
 
-      return Card.findByIdAndUpdate(id, {
-        $push: { seenBy: req.user._id },
-        totalScore: cardValue
-      });
+      return Card.findByIdAndUpdate(
+        id,
+        {
+          $push: { seenBy: req.user._id },
+          totalScore: cardValue
+        },
+        { new: true }
+      );
     })
-    .then(() => {
-      return Card.findByIdAndUpdate(id, {
-        $push: { seenBy: req.user._id }
+    .then((card) => {
+      User.findByIdAndUpdate(card.creator, {
+        $push: { totalScore: card.totalScore }
       });
     })
     .then(() => {
@@ -201,5 +223,20 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
+cardRouter.post(
+  '/:id/notification/:user/delete',
+  routeGuard,
+  (req, res, next) => {
+    const { id, user } = req.params;
+    Notification.findOneAndDelete({ card: id, user })
+      .then(() => {
+        res.redirect('back');
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+);
 
 module.exports = cardRouter;

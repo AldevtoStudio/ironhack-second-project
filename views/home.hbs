@@ -1,37 +1,78 @@
-Notification count:
-{{notificationCount}}
-{{#each notifications}}
+{{!-- {{#each notifications}}
   <p><a href="/profile/{{this.user._id}}">{{this.user.name}}</a>
     {{#if comment}}commented{{else}}liked{{/if}}
     your
     <a href="/meow/{{this.publication._id}}">post</a></p>
-{{/each}}
+{{/each}} --}}
 
 {{#if card}}
-  <div>
-    {{#if card.media}} <img src="{{card.media}}" alt="{{card.title}}" /> {{/if}}
-    {{card.title}}
-    {{card.text}}
-    <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
+  <div class="homeCard">
+    <div class="cardMedia">
+      {{#if card.media}}
+        <img src="{{card.media}}" alt="{{card.title}}" />
+      {{/if}}
+    </div>
+    {{#if card.media}}
+      <div class="cardBodyFull">
+        <h5>{{card.title}}</h5>
+        <p>{{card.text}}</p>
+      </div>
+    {{else}}
+      <div class="cardBodyTitleDesc">
+        <h5>{{card.title}}</h5>
+        <p>{{card.text}}</p>
+      </div>
+    {{/if}}
+    <div class="cardFeedback">
+      <form action="/card/{{card._id}}/dislike" method="POST">
+        <button><img
+            class="feedbackIcon"
+            src="/images/home/dislikeIcon.png"
+            alt="Like Icon"
+          /></button>
+      </form>
 
-    <form action="/card/{{card._id}}/like" method="POST">
-      <button>Like</button>
-    </form>
+      <form action="/card/{{card._id}}/ignore" method="POST">
+        <button><img
+            class="feedbackIcon"
+            src="/images/home/ignoreIcon.png"
+            alt="Like Icon"
+          /></button>
+      </form>
 
-    <form action="/card/{{card._id}}/dislike" method="POST">
-      <button>Disike</button>
-    </form>
-
-    <form action="/card/{{card._id}}/ignore" method="POST">
-      <button>Ignore</button>
-    </form>
-
-    <form action="/card/{{card._id}}/comment" method="POST">
+      <form action="/card/{{card._id}}/like" method="POST">
+        <button><img
+            class="feedbackIcon"
+            src="/images/home/likeIcon.png"
+            alt="Like Icon"
+          /></button>
+      </form>
+    </div>
+    <div class="creatorName">
+      <a href="/profile/{{card.creator._id}}">{{card.creator.name}}</a>
+    </div>
+    <div class="cardInfo">
+      <div>
+        <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
+        <p>{{card.likeCount}}</p>
+      </div>
+      <div>
+        <img src="/images/home/greyCommentIcon.png" alt="Grey Like Icon" />
+        <p>{{card.comments.length}}</p>
+      </div>
+    </div>
+    <div class="commentFeedback">
+      <a href=""><img
+          class="commentIcon"
+          src="/images/home/commentIcon.png"
+          alt="Comment Icon"
+        /></a>
+    </div>
+    {{!-- <form action="/card/{{card._id}}/comment" method="POST">
       <label for="input-comment"></label>
       <input type="text" name="commentText" id="input-comment" />
       <button>Comment</button>
-    </form>
-
+    </form> --}}
   </div>
 {{else}}
   <h3>You have seen all the available cards!</h3>

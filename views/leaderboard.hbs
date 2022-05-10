@@ -2,26 +2,26 @@
   <div class="profile">
     <div class="person second">
       <img src="{{user2.picture}}" alt="photo" class="photo-second" />
-      <p class="link">{{user2.name}}</p>
+      <p class="linkLeaderBoard">{{user2.name}}</p>
       <p class="points">#2 - {{user2.score}} score</p>
     </div>
     <div class="person first">
-      <div>
+      <div class="parent-first-place">
         <img src="{{user1.picture}}" alt="" class="photo-first" />
 
-        {{! <img
+        <img
           id="crown-image"
           src="/images/leaderboard/icons8-crown-48.png"
           alt=""
-        /> }}
+        />
       </div>
-
-      <p class="link">MantllaBigfoot</p>
+      <p class="linkLeaderBoard">{{user1.name}}</p>
+      {{! <p class="linkLeaderBoard">MantllaBigfoot</p> }}
       <p class="points">#1 - {{user1.score}} score</p>
     </div>
     <div class="person third">
       <img src="{{user3.picture}}" alt="" class="photo-third" />
-      <p class="link">{{user3.name}}</p>
+      <p class="linkLeaderBoard">{{user3.name}}</p>
       <p class="points">#3 - {{user3.score}} score</p>
     </div>
   </div>
