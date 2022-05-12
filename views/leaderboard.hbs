@@ -40,7 +40,14 @@
 
 <div class="leaderboard-card-container">
   <section class="leaderboard-cards">
-          <div class="first-card-publication">
+    <div class="first-card-container">
+x
+        <img
+          id="crown-card"
+          src="/images/leaderboard/icons8-crown-48.png"
+          alt=""
+        />
+         <div class="first-card-publication">
         {{#if cardFirst.media}}
           <div>
             <img src="{{cardFirst.media}}" alt="image" />
@@ -69,6 +76,8 @@
             />{{cardFirst.comments.length}}</p>
         </div>
       </div>
+    </div>
+         
     {{#each restCards}}
       <div class="cardPublication">
         {{#if media}}

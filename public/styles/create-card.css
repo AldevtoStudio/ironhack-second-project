@@ -1,7 +1,7 @@
 .create-card-container {
   display: flex;
   flex-direction: row;
-  background-color: #d3d3d3;
+  background-color: white;
   border: 1px solid white;
   border-radius: 10px;
   height: 70rem;
@@ -24,6 +24,12 @@
   height: 30rem;
   font-size: 24px;
   border-color: #454545;
+}
+
+.create-card-upload-container {
+  position: absolute;
+  top: 29rem;
+  right: 2rem;
 }
 
 #create-button {
@@ -52,10 +58,10 @@
 }
 
 .create-card-preview-container img {
-  width: 20rem;
-  height: 17rem;
-  max-width: 20rem;
-  max-height: 17rem;
+  width: 45rem;
+  height: 30rem;
+  max-width: 49em;
+  max-height: 35rem;
   margin: 0 auto;
 }
 
