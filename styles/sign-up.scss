@@ -8,10 +8,12 @@ body {
   background: #fff;
   position: relative;
   border-radius: 5px;
+  height: 400px;
+  object-fit: cover;
+  display: flex;
 }
 .sign-up {
   background-color: transparent;
-
   background-clip: border-box;
   background-origin: padding-box;
   background-size: auto auto;
@@ -85,4 +87,5 @@ input:hover,
 }
 .submit {
   background-color: rgb(148, 224, 237);
+  border-radius: 8px;
 }

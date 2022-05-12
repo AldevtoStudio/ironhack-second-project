@@ -1,17 +1,28 @@
-<h3>Edit user profile</h3>
+<div class="container">
+  <div class="form">
+    <h3 id="main">Edit profile</h3>
 
-<form method="POST" enctype="multipart/form-data">
-  <label for="input-name">Name</label>
-  <input
-    type="text"
-    id="input-name"
-    name="name"
-    placeholder="Your Name"
-    value="{{profile.name}}"
-  />
+    <form method="POST" enctype="multipart/form-data">
+      <label for="input-name">Name</label>
+      <input
+        type="text"
+        id="input-name"
+        style="max-height:50px;width:100px
+        name="name"
+        placeholder="Your Name"
+        value="{{profile.name}}"
+      />
+      <p>Picture</p>
+      <label for="input-picture" class="add-picture">Click to upload</label>
+      <input
+        id="input-picture"
+        type="file"
+        style="max-height:50px;width:100px"
+        accept="image/*"
+        name="picture"
+      />
 
-  <label for="input-picture">Your profile picture</label>
-  <input id="input-picture" type="file" accept="image/*" name="picture" />
-
-  <button>Update profile</button>
-</form>
+      <button class="submit">Update profile</button>
+    </form>
+  </div>
+</div>

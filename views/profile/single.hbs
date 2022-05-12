@@ -1,4 +1,5 @@
-<div class="container">
+
+    <div class="container">
 
 		<div class="profile">
 
@@ -9,28 +10,29 @@
       src="{{profile.picture}}"
       alt="{{profile.name}}"
     />
-    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
+  
+<script
+      src="https://kit.fontawesome.com/64feb954eb.js"
+      crossorigin="anonymous"
+    ></script>
      <a href="/profile/edit"><button id="edit" <i class="far fa-edit"></i></button>
    </a>
       </div>
   {{/if}}
 <div class="profile-user-settings">
   <h2 filter-content="S" id="profile-user-name">{{profile.name}}</h2>
-
-  
 </div>
+  
+
   
 <div id="profile-stats">
   <ul>
-   <li id="scores">{{sum}} scores</li>
+   <li id="scores">{{sum}}</li>
    </ul>
    </div> 
 </div>
 </div>
-</div>
-  
+
 {{#each cards}}
       <div class="cardPublication">
         {{#if media}}
@@ -70,7 +72,7 @@
       </div>
       
       <form method="POST" action="/card/{{_id}}/delete">
-        <button>Delete publication</button>
+       <button id="button-delete" <i class="fa-solid fa-trash-can"></i></button>
       </form>
 
 
@@ -78,16 +80,6 @@
  
 
 
-
-
-
-
-
-    
-
-
-    
- 
-  
-
 </div>
+</div>
+  
