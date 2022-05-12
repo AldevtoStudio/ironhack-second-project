@@ -1,14 +1,29 @@
 <div class="leaderboard-container one">
   <div class="profile">
     <div class="person second">
-      <img src="{{user2.picture}}" alt="photo" class="photo-second" />
+      {{#if user2.picture}}
+        <img src="{{user2.picture}}" alt="photo" class="photo-second" />
+      {{else}}
+        <img
+          src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
+          alt="photo"
+          class="photo-second"
+        />
+      {{/if}}
       <p class="linkLeaderBoard">{{user2.name}}</p>
       <p class="points">#2 - {{user2.score}} score</p>
     </div>
     <div class="person first">
       <div class="parent-first-place">
-        <img src="{{user1.picture}}" alt="" class="photo-first" />
-
+        {{#if user1.picture}}
+          <img src="{{user1.picture}}" alt="" class="photo-first" />
+        {{else}}
+          <img
+            src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
+            alt="photo"
+            class="photo-second"
+          />
+        {{/if}}
         <img
           id="crown-image"
           src="/images/leaderboard/icons8-crown-48.png"
@@ -20,7 +35,15 @@
       <p class="points">#1 - {{user1.score}} score</p>
     </div>
     <div class="person third">
-      <img src="{{user3.picture}}" alt="" class="photo-third" />
+      {{#if user3.picture}}
+        <img src="{{user3.picture}}" alt="" class="photo-third" />
+      {{else}}
+        <img
+          src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
+          alt="photo"
+          class="photo-second"
+        />
+      {{/if}}
       <p class="linkLeaderBoard">{{user3.name}}</p>
       <p class="points">#3 - {{user3.score}} score</p>
     </div>
@@ -28,7 +51,50 @@
 </div>
 
 <div class="cardList">
-  {{#each cards}}
+  <div class="item">
+    <div class="firstCard">
+      <div class="cardPublication">
+        <img
+          id="crown-card"
+          src="/images/leaderboard/icons8-crown-48.png"
+          alt=""
+        />
+        <div class="cardMedia">
+          {{#if cardFirst.media}}
+            <img src="{{cardFirst.media}}" alt="{{cardFirst.title}}" />
+          {{/if}}
+        </div>
+        {{#if cardFirst.media}}
+          <div class="cardBodyFull">
+            <h5>{{cardFirst.title}}</h5>
+            <p>{{cardFirst.text}}</p>
+          </div>
+        {{else}}
+          <div class="cardBodyTitleDesc">
+            <h5>{{cardFirst.title}}</h5>
+            <p>{{cardFirst.text}}</p>
+          </div>
+        {{/if}}
+        <div class="cardInfo">
+          <div class="creatorName">
+            <a
+              href="/profile/{{cardFirst.creator._id}}"
+            >{{cardFirst.creator.name}}</a>
+          </div>
+          <div>
+            <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
+            <p>{{cardFirst.likeCount}}</p>
+          </div>
+          <div>
+            <img src="/images/home/greyCommentIcon.png" alt="Grey Like Icon" />
+            <p>{{cardFirst.comments.length}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{#each restCards}}
     <div class="item">
       <div class="cardPublication">
         <div class="cardMedia">

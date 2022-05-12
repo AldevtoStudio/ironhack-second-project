@@ -1,7 +1,7 @@
 <div class="create-card-container">
   <form method="POST" enctype="multipart/form-data">
     <div class="create-card-image-container">
-      <div>
+      <div class="create-card-upload-container">
         <input
           onchange="document.getElementById('create-card-preview').src = window.URL.createObjectURL(this.files[0])"
           type="file"
@@ -26,7 +26,7 @@
         <img
           id="create-card-preview"
           alt="test"
-          src="https://cdn.sstatic.net/Img/unified/sprites.svg?v=e5e58ae7df45"
+          src="/images/cardcreate/plus-icon.png"
         />
       </div>
 

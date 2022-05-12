@@ -1,7 +1,8 @@
 .leaderboard-container {
-  min-height: 475px;
+  min-height: 300px;
   width: 40rem;
   margin: 0 auto;
+  margin-top: 7em;
 }
 
 .photo-second {
@@ -26,6 +27,14 @@
   margin: 1rem 0;
 }
 
+#crown-image {
+  position: absolute;
+  top: -7px;
+  left: 0px;
+  width: 30px;
+  transform: rotate(-20deg);
+}
+
 .parent-first-place {
   position: relative;
   top: 0;
@@ -42,14 +51,6 @@
   box-shadow: 0 0 10px #ffd700;
   margin: 1rem 0;
   position: relative;
-}
-
-#crown-image {
-  position: absolute;
-  top: -7px;
-  left: 0px;
-  width: 30px;
-  transform: rotate(-20deg);
 }
 
 .profile {
@@ -117,6 +118,20 @@ main {
   flex: 0 0 33.3333%;
   width: 33%;
   margin-bottom: 4em;
+}
+
+#crown-card {
+  position: absolute;
+  left: -1.5rem;
+  top: -2.8rem;
+  width: 60px;
+  transform: rotate(-20deg);
+}
+
+.firstCard .cardPublication {
+  position: relative;
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 20px #ffd700;
 }
 
 @media screen and (max-width: 1580px) {
