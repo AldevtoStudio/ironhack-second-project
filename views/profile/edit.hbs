@@ -1,19 +1,17 @@
-<div class="main">
-  <h3>Edit user profile</h3>
+<h3>Edit user profile</h3>
 
-  <form method="POST" enctype="multipart/form-data">
-    <label for="input-name">Name</label>
-    <input
-      type="text"
-      id="input-name"
-      name="name"
-      placeholder="Your Name"
-      value="{{profile.name}}"
-    />
+<form method="POST" enctype="multipart/form-data">
+  <label for="input-name">Name</label>
+  <input
+    type="text"
+    id="input-name"
+    name="name"
+    placeholder="Your Name"
+    value="{{profile.name}}"
+  />
 
-    <label for="input-picture">Your profile picture</label>
-    <input id="input-picture" type="file" accept="image/*" name="picture" />
+  <label for="input-picture">Your profile picture</label>
+  <input id="input-picture" type="file" accept="image/*" name="picture" />
 
-    <button>Update profile</button>
-  </form>
-</div>
+  <button>Update profile</button>
+</form>

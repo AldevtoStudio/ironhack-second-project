@@ -1,5 +1,5 @@
 * {
-  font-family: 'Calibri';
+  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
 }
 body {
@@ -32,7 +32,7 @@ body {
       border-style: solid;
       border-color: #ffffff;
       display: block;
-      box-shadow: 0 0 8px 3px #9dd7db;
+      box-shadow: 0 0 8px 3px #167e85;
       position: relative;
     }
     .profile-user-settings {
@@ -42,7 +42,10 @@ body {
     #profile-user-name {
       display: inline-block;
       font-size: 3.2rem;
-      font-weight: 300;
+      font-weight: 350;
+      margin-bottom: -5rem;
+      text-shadow: rgb(60, 152, 213) 1px 0 10px;
+      color: rgb(1, 0, 1);
     }
 
     .btn {
@@ -51,8 +54,8 @@ body {
       background: none;
       border: none;
       color: inherit;
-      padding: 0;
-      cursor: pointer;
+      padding: 10px;
+      cursor: crosshair;
     }
     .btn:focus {
       outline: 0.5rem auto #4d90fe;
@@ -63,11 +66,12 @@ body {
       border: 0.1rem solid #dbdbdb;
       border-radius: 0.3rem;
       padding: 0 1rem;
-      margin-left: 2rem;
+      margin-left: 3rem;
       background-color: rgb(234, 232, 227);
     }
     #profile-stats {
-      margin-top: 6rem;
+      margin-top: 7.5rem;
+      margin-left: 8rem;
       vertical-align: middle;
       justify-content: center;
       font-size: 1.2rem;
@@ -76,21 +80,24 @@ body {
       display: flex;
       font-size: 1.5rem;
       line-height: 1.5;
-      margin-left: 4rem;
       cursor: pointer;
-      margin-right: 3rem;
-      margin-top: -0.5rem;
+      margin-right: 6rem;
+    }
+    ul {
+      align-items: center;
+      margin: 0%;
+      margin-top: -2rem;
+      margin-left: 1.5rem;
     }
     #edit {
       width: 35px;
       height: 35px;
       border-radius: 50%;
       border: 2px solid rgb(75, 127, 205);
-      margin-right: 35px;
+      margin-right: 45px;
       top: 0;
-
-      margin-bottom: 60px;
-      left: -3px;
+      margin-bottom: 80px;
+      left: -15px;
       align-items: center;
       justify-content: center;
       display: flex;
