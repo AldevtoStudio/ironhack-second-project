@@ -108,7 +108,7 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
       if (like) {
         throw new Error('USER_CANNOT_LIKE_THE_SAME_CARD');
       } else {
-        return Feedback.create({ card: id, user: req.user._id, value: 0.3 });
+        return Feedback.create({ card: id, user: req.user._id, value: 1 });
       }
     })
     .then(() => {
@@ -128,7 +128,7 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
       feedbacks.map((feedback) => {
         cardValue += feedback.value;
 
-        if (feedback.value === 0.3) likes++;
+        if (feedback.value === 1) likes++;
       });
 
       return Card.findByIdAndUpdate(
@@ -165,7 +165,7 @@ cardRouter.post('/:id/dislike', routeGuard, (req, res, next) => {
       if (unlike) {
         throw new Error('USER_CANNOT_UNLIKE_THE_SAME_CARD');
       } else {
-        return Feedback.create({ card: id, user: req.user._id, value: -0.3 });
+        return Feedback.create({ card: id, user: req.user._id, value: -1 });
       }
     })
     .then(() => {

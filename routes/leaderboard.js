@@ -33,7 +33,7 @@ leaderboardRouter.get('/', (req, res, next) => {
           user3.picture = value.picture;
         }
       });
-      return Card.find().sort({ totalScore: -1 }).limit(10).populate('creator');
+      return Card.find().sort({ totalScore: -1 }).populate('creator').limit(10);
     })
     .then((cards) => {
       res.render('leaderboard', {

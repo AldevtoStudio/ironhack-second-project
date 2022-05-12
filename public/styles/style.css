@@ -1,17 +1,41 @@
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url("/fonts/calibri-font-family/calibri-regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url("/fonts/calibri-font-family/calibri-bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url("/fonts/calibri-font-family/calibri-italic.ttf");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url("/fonts/calibri-font-family/calibri-bold-italic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: 'ColshareCalibri';
 }
 
 main {
   max-width: 52em;
   padding: 0 1em;
   margin: 0 auto;
-  font-family: 'Calibri';
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 2;
 }
 
@@ -41,7 +65,6 @@ nav .login-register {
   display: flex;
   color: #4367ec;
   font-weight: bold;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: white;
   border-radius: 25px;
   padding: 0.4em 0;
@@ -81,7 +104,6 @@ nav .notificationsMenu img {
 }
 
 nav .notificationsMenu .notificationNumber {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   position: relative;
   top: -36px;
@@ -102,6 +124,8 @@ nav .profileMenu {
 
 nav .profileMenu img {
   width: 30px;
+  height: 30px;
+  object-fit: cover;
   border-radius: 25px;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.1);
   margin-left: 0.6em;
@@ -117,7 +141,6 @@ nav .dropdown {
 }
 
 nav .dropdown-menu {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -138,7 +161,6 @@ nav .dropdown-menu {
 
 nav .dropdown-menu .notificationContainer {
   text-align: end;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #ebebeb;
   border-radius: 0.25rem;
   width: 100%;
@@ -239,7 +261,6 @@ label {
 }
 
 .card {
-  font-family: 'Heebo';
   --bg-filter-opacity: 0.5;
   background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
   height: 40em;
@@ -273,7 +294,6 @@ label {
 
 .card p {
   font-size: 0.75em;
-  font-family: 'Open Sans';
   margin-top: 0.5em;
   line-height: 2em;
 }

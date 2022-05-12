@@ -68,12 +68,10 @@
           alt="Comment Icon"
         /></a>
     </div>
-    {{!-- <form action="/card/{{card._id}}/comment" method="POST">
-      <label for="input-comment"></label>
-      <input type="text" name="commentText" id="input-comment" />
-      <button>Comment</button>
-    </form> --}}
   </div>
 {{else}}
-  <h3>You have seen all the available cards!</h3>
+  <div class="seenAll">
+    <img src="/images/home/allCardsSeen.png" alt="All Cads Seen Img" />
+    <h2>You have seen all the available cards!</h2>
+  </div>
 {{/if}}

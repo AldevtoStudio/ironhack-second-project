@@ -31,51 +31,45 @@
 </div>
 </div>
   
-{{#each cards}}
-      <div class="cardPublication">
-        {{#if media}}
-          <div>
-            <img src="{{media}}" alt="image" />
-          </div>
-        {{/if}}
-        {{#if title}}
-          <div>
-            <h5>{{title}}</h5>
-          </div>
-        {{/if}}
-        {{#if text}}
-          <div>
-            <p class="card-description">flweqflwqhfkhwfhlwefhqlfhewhkejfwqef v
-              werwerwer werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
-              ewfwefwefwefwefwefwefwefwefwefhqlfhewhkejfwqef v werwerwer
-              werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
-              ewfwefwefwefwefwefwefwefwefwefhqlfhewhkejfwqef v werwerwer
-              werwerwerrwe rwewrgtwfewfwefwehfwfkhwefhefwhefwehf
-              ewfwefwefwefwefwefwefwefwef
-            </p>
-          </div>
-        {{/if}}
-        <div class="feedback-container">
-          <span>{{creator.name}}</span>
-          <p>
-            <img src="/images/leaderboard/greyLikeIcon.png" alt="" />
-            {{likeCount}}</p>
-          <p>
-            <img
-              id="last-img"
-              src="/images/leaderboard/greyCommentIcon.png"
-              alt=""
-            />{{comments.length}}</p>
-        </div>
+<div class="cardList">
+  {{#each cards}}
+      <div class="item">
+        <div class="cardPublication">
+    <div class="cardMedia">
+      {{#if this.media}}
+        <img src="{{this.media}}" alt="{{this.title}}" />
+      {{/if}}
+    </div>
+    {{#if this.media}}
+      <div class="cardBodyFull">
+        <h5>{{this.title}}</h5>
+        <p>{{this.text}}</p>
       </div>
-      
-      <form method="POST" action="/card/{{_id}}/delete">
+    {{else}}
+      <div class="cardBodyTitleDesc">
+        <h5>{{this.title}}</h5>
+        <p>{{this.text}}</p>
+      </div>
+    {{/if}}
+    <div class="cardInfo">
+      <div>
+        <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
+        <p>{{this.likeCount}}</p>
+      </div>
+      <div>
+        <img src="/images/home/greyCommentIcon.png" alt="Grey Like Icon" />
+        <p>{{this.comments.length}}</p>
+      </div>
+    </div>
+
+    <form method="POST" action="/card/{{this._id}}/delete">
         <button>Delete publication</button>
       </form>
-
-
+  </div>
+      </div>
     {{/each}}
  
+</div>
 
 
 

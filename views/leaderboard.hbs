@@ -27,38 +27,40 @@
   </div>
 </div>
 
-<div class="leaderboard-card-container">
-  <section class="leaderboard-cards">
-    {{#each cards}}
+<div class="cardList">
+  {{#each cards}}
+    <div class="item">
       <div class="cardPublication">
-        {{#if media}}
-          <div>
-            <img src="{{media}}" alt="image" />
+        <div class="cardMedia">
+          {{#if this.media}}
+            <img src="{{this.media}}" alt="{{this.title}}" />
+          {{/if}}
+        </div>
+        {{#if this.media}}
+          <div class="cardBodyFull">
+            <h5>{{this.title}}</h5>
+            <p>{{this.text}}</p>
+          </div>
+        {{else}}
+          <div class="cardBodyTitleDesc">
+            <h5>{{this.title}}</h5>
+            <p>{{this.text}}</p>
           </div>
         {{/if}}
-        {{#if title}}
-          <div>
-            <h5>{{title}}</h5>
+        <div class="cardInfo">
+          <div class="creatorName">
+            <a href="/profile/{{this.creator._id}}">{{this.creator.name}}</a>
           </div>
-        {{/if}}
-        {{#if text}}
           <div>
-            <p class="card-description">{{text}} </p>
+            <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
+            <p>{{this.likeCount}}</p>
           </div>
-        {{/if}}
-        <div class="feedback-container">
-          <span>{{creator.name}}</span>
-          <p>
-            <img src="/images/leaderboard/greyLikeIcon.png" alt="" />
-            {{likeCount}}</p>
-          <p>
-            <img
-              id="last-img"
-              src="/images/leaderboard/greyCommentIcon.png"
-              alt=""
-            />{{comments.length}}</p>
+          <div>
+            <img src="/images/home/greyCommentIcon.png" alt="Grey Like Icon" />
+            <p>{{this.comments.length}}</p>
+          </div>
         </div>
       </div>
-    {{/each}}
-  </section>
+    </div>
+  {{/each}}
 </div>

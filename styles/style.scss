@@ -1,6 +1,31 @@
 $font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $grey: hsl(0, 0, 90%);
 
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url('/fonts/calibri-font-family/calibri-regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url('/fonts/calibri-font-family/calibri-bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url('/fonts/calibri-font-family/calibri-italic.ttf');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'ColshareCalibri';
+  src: url('/fonts/calibri-font-family/calibri-bold-italic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
 * {
   &,
   &:before,
@@ -11,14 +36,13 @@ $grey: hsl(0, 0, 90%);
 
 body {
   margin: 0;
+  font-family: 'ColshareCalibri';
 }
 
 main {
   max-width: 52em;
   padding: 0 1em;
   margin: 0 auto;
-  font-family: 'Calibri';
-  font-family: $font-sans;
   line-height: 2;
 }
 
@@ -47,7 +71,6 @@ nav {
     display: flex;
     color: #4367ec;
     font-weight: bold;
-    font-family: $font-sans;
     background-color: white;
     border-radius: 25px;
     padding: 0.4em 0;
@@ -86,7 +109,6 @@ nav {
     }
 
     .notificationNumber {
-      font-family: $font-sans;
       font-size: 16px;
       position: relative;
       top: -36px;
@@ -107,6 +129,8 @@ nav {
 
     img {
       width: 30px;
+      height: 30px;
+      object-fit: cover;
       border-radius: 25px;
       box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.1);
       margin-left: 0.6em;
@@ -123,7 +147,6 @@ nav {
   }
 
   .dropdown-menu {
-    font-family: $font-sans;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -143,7 +166,6 @@ nav {
 
     .notificationContainer {
       text-align: end;
-      font-family: $font-sans;
       background-color: rgb(235, 235, 235);
       border-radius: 0.25rem;
       width: 100%;
@@ -243,7 +265,6 @@ label {
 }
 
 .card {
-  font-family: 'Heebo';
   --bg-filter-opacity: 0.5;
   background-image: linear-gradient(
       rgba(0, 0, 0, var(--bg-filter-opacity)),
@@ -281,7 +302,6 @@ label {
 
 .card p {
   font-size: 0.75em;
-  font-family: 'Open Sans';
   margin-top: 0.5em;
   line-height: 2em;
 }
