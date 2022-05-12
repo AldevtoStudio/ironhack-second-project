@@ -9,11 +9,10 @@ const User = require('./../models/user');
 const Feedback = require('../models/feedback');
 
 profileRouter.get('/edit', routeGuard, (req, res) => {
-  res.render(
-    'profile/edit',
-    { profile: req.user },
-    { pageStyles: [{ style: '/styles/edit-profile.css' }] }
-  );
+  res.render('profile/edit', {
+    profile: req.user,
+    pageStyles: [{ style: '/styles/edit-profile.css' }]
+  });
 });
 
 profileRouter.post(
