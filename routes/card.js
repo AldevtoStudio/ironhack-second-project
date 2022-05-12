@@ -26,6 +26,10 @@ cardRouter.get('/create', routeGuard, (req, res) => {
 
 cardRouter.get('/:id', (req, res, next) => {
   const { id } = req.params;
+  const { flip } = req.query;
+
+  console.log(flip);
+
   Card.findById(id)
     .populate('creator')
     .populate({ path: 'comments', populate: { path: 'user' } })
@@ -43,7 +47,8 @@ cardRouter.get('/:id', (req, res, next) => {
 
       res.render('card/view', {
         card,
-        pageStyles: [{ style: '/styles/singleCard.css' }]
+        pageStyles: [{ style: '/styles/singleCard.css' }],
+        flip
       });
     })
     .catch((error) => {
@@ -231,7 +236,7 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
       return Card.findByIdAndUpdate(
         id,
         {
-          $push: { comments: comment._id, seenBy: req.user._id }
+          $push: { comments: comment._id }
         },
         { new: true }
       );
@@ -244,7 +249,7 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
       });
     })
     .then(() => {
-      res.redirect(`back`);
+      res.redirect(`/card/${id}`);
     })
     .catch((error) => {
       next(error);
