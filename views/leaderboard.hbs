@@ -76,11 +76,6 @@
           </div>
         {{/if}}
         <div class="cardInfo">
-          <div class="creatorName">
-            <a
-              href="/profile/{{cardFirst.creator._id}}"
-            >{{cardFirst.creator.name}}</a>
-          </div>
           <div>
             <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
             <p>{{cardFirst.likeCount}}</p>
@@ -89,6 +84,11 @@
             <img src="/images/home/greyCommentIcon.png" alt="Grey Like Icon" />
             <p>{{cardFirst.comments.length}}</p>
           </div>
+        </div>
+        <div class="creatorName">
+          <a
+            href="/profile/{{cardFirst.creator._id}}"
+          >{{cardFirst.creator.name}}</a>
         </div>
       </div>
     </div>
@@ -114,9 +114,6 @@
           </div>
         {{/if}}
         <div class="cardInfo">
-          <div class="creatorName">
-            <a href="/profile/{{this.creator._id}}">{{this.creator.name}}</a>
-          </div>
           <div>
             <img src="/images/home/greyLikeIcon.png" alt="Grey Like Icon" />
             <p>{{this.likeCount}}</p>
@@ -125,6 +122,9 @@
             <img src="/images/home/greyCommentIcon.png" alt="Grey Like Icon" />
             <p>{{this.comments.length}}</p>
           </div>
+        </div>
+        <div class="creatorName">
+          <a href="/profile/{{this.creator._id}}">{{this.creator.name}}</a>
         </div>
       </div>
     </div>
