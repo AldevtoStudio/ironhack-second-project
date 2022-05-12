@@ -4,60 +4,58 @@
 
 body {
   min-height: 100vh;
-  padding-bottom: 3rem;
 }
 
 .container {
   margin: 0 auto;
   margin-bottom: 80px;
   padding: 0 1rem;
-  width: 52rem;
+  width: max-content;
 }
 
-.container .profile {
+.profile {
   padding: 6rem 0;
 }
 
-.container .profile .profile-image {
+.profile-image {
   float: left;
-  max-width: 9rem;
-  max-height: 5rem;
+  width: 150px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 3rem;
 }
 
-.container .profile #profile-img {
-  width: 144px;
-  height: 144px;
+#profile-img {
   object-fit: cover;
-  object-fit: cover;
+  width: 150px;
+  height: 150px;
   object-position: 50% 50%;
   border-radius: 50%;
   border-radius: 50%;
   border-style: solid;
-  border-color: #ffffff;
+  border-color: #e9d3d9;
   display: block;
   box-shadow: 0 0 8px 3px #167e85;
   position: relative;
 }
 
-.container .profile .profile-user-settings {
+.profile-user-settings {
   float: left;
-  margin-top: 1.1rem;
+  margin-top: -2.5rem;
 }
 
-.container .profile #profile-user-name {
+#profile-user-name {
   display: inline-block;
-  font-size: 3.2rem;
-  font-weight: 350;
+  font-size: 4rem;
+  font-weight: 400;
   margin-bottom: -5rem;
   text-shadow: #3c98d5 1px 0 10px;
   color: #010001;
 }
 
-.container .profile .btn {
+.btn {
   display: inline-block;
   font: inherit;
   background: none;
@@ -67,11 +65,11 @@ body {
   cursor: crosshair;
 }
 
-.container .profile .btn:focus {
+.btn:focus {
   outline: 0.5rem auto #4d90fe;
 }
 
-.container .profile .profile-edit-btn {
+.profile-edit-btn {
   font-size: 1.4rem;
   line-height: 1.8;
   border: 0.1rem solid #dbdbdb;
@@ -81,15 +79,15 @@ body {
   background-color: #eae8e3;
 }
 
-.container .profile #profile-stats {
-  margin-top: 7.5rem;
+#profile-stats {
+  margin-top: 7rem;
   margin-left: 8rem;
   vertical-align: middle;
   justify-content: center;
   font-size: 1.2rem;
 }
 
-.container .profile li {
+li {
   display: flex;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -97,14 +95,14 @@ body {
   margin-right: 6rem;
 }
 
-.container .profile ul {
+ul {
   align-items: center;
   margin: 0%;
   margin-top: -2rem;
   margin-left: 1.5rem;
 }
 
-.container .profile #edit {
+#edit {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -117,7 +115,7 @@ body {
   justify-content: center;
   display: flex;
   background: #e5dede;
-  color: #4893f6;
+  color: #1013a2;
   position: relative;
 }
 
