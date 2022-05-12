@@ -9,6 +9,9 @@ body {
   background: #fff;
   position: relative;
   border-radius: 5px;
+  height: 400px;
+  object-fit: cover;
+  display: flex;
 }
 
 .sign-up {
