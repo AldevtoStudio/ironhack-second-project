@@ -1,7 +1,10 @@
 .preview-card {
-  font-family: 'Heebo';
   --bg-filter-opacity: 0.5;
-  background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+  background-image: linear-gradient(
+      rgba(0, 0, 0, var(--bg-filter-opacity)),
+      rgba(0, 0, 0, var(--bg-filter-opacity))
+    ),
+    var(--bg-img);
   height: 40em;
   width: 30em;
   font-size: 1.5em;
@@ -33,7 +36,6 @@
 
 .preview-card p {
   font-size: 0.75em;
-  font-family: 'Open Sans';
   margin-top: 0.5em;
   line-height: 2em;
 }

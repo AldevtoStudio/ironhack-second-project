@@ -1,70 +1,115 @@
 .cardPublication {
-  border: 1px solid rgb(255, 255, 255);
+  margin: 0 auto;
+  background-color: #fff;
   border-radius: 10px;
-  height: 400px;
-  width: 270px;
-  margin: 2rem auto;
-  box-shadow: 0 0 5em -1em black;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  height: 730px;
   padding: 1em;
-  position: relative;
 
-  img {
+  .cardMedia img {
     width: 100%;
-    height: 40%;
-    max-height: 40%;
-    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
     border-radius: 10px;
   }
 
-  h5 {
-    font-size: 1.5rem;
+  .feedbackIcon {
+    width: 74px;
+    cursor: pointer;
+  }
+
+  form {
     margin: 0;
   }
 
-  .card-description {
-    margin-top: 0;
+  .commentIcon {
+    width: 74px;
+  }
+
+  .cardBodyFull {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    min-height: 250px;
+  }
+
+  .cardBodyTitleDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 10.9em;
+    min-height: 446px;
+  }
+
+  .cardFeedback {
+    display: flex;
+    justify-content: center;
+
+    button {
+      border: none;
+    }
+  }
+
+  .commentFeedback {
+    position: relative;
+
+    img {
+      position: absolute;
+      bottom: calc(100% - 195px);
+      right: -55px;
+    }
+  }
+
+  .creatorName {
+    font-size: 24px;
+    font-weight: bold;
+    color: #bdbdbd;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .cardInfo {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #bdbdbd;
+    font-weight: bold;
+
+    div:not(.creatorName) {
+      display: flex;
+      align-self: center;
+      margin-left: 1em;
+    }
+
+    img {
+      width: 26px;
+      align-self: center;
+      margin-right: 0.2em;
+    }
+  }
+
+  h5 {
+    font-size: 38px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 22px;
+    margin: 0;
     max-width: 100%;
     max-height: 50%;
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4; /* number of lines to show */
-    line-clamp: 4;
+    -webkit-line-clamp: 6; /* number of lines to show */
+    line-clamp: 6;
     -webkit-box-orient: vertical;
-  }
-
-  .feedback-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    position: absolute;
-    bottom: 0;
-    left: 0px;
-    right: 0px;
-
-    p {
-      width: 50%;
-      vertical-align: middle;
-      text-align: center;
-      padding: 0 2rem;
-      color: #b5b5bd;
-    }
-
-    span {
-      color: #b5b5bd;
-      font-weight: bold;
-      margin-left: 10px;
-    }
-
-    img {
-      vertical-align: middle;
-      margin: 0;
-      width: 17px;
-    }
-    #last-img {
-      margin: 4px;
-    }
   }
 }
 

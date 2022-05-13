@@ -6,7 +6,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
-
 const User = require('./models/user');
 const bcryptjs = require('bcryptjs');
 

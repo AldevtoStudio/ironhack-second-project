@@ -1,5 +1,4 @@
 * {
-  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
 }
 
@@ -7,13 +6,10 @@ body {
   min-height: 100vh;
 }
 .container {
-  margin-left: 0;
-  margin-right: 0;
   margin: 0 auto;
   margin-bottom: 80px;
   padding: 0 1rem;
-  max-width: 95rem;
-  display: flex;
+  width: max-content;
 }
 .profile {
   padding: 6rem 0;
@@ -109,4 +105,36 @@ ul {
   background: rgb(229, 222, 222);
   color: rgb(16, 19, 162);
   position: relative;
+}
+
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.item {
+  list-style: none;
+  flex: 0 0 33.3333%;
+  width: 33%;
+  margin-bottom: 4em;
+}
+
+@media screen and (max-width: 1580px) {
+  .item {
+    flex: 0 0 50%;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .item {
+    flex: 0 0 100%;
+    width: 100%;
+  }
 }

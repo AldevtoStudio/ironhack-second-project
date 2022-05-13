@@ -26,6 +26,10 @@ cardRouter.get('/create', routeGuard, (req, res) => {
 
 cardRouter.get('/:id', (req, res, next) => {
   const { id } = req.params;
+  const { flip } = req.query;
+
+  console.log(flip);
+
   Card.findById(id)
     .populate('creator')
     .populate({ path: 'comments', populate: { path: 'user' } })
@@ -43,7 +47,8 @@ cardRouter.get('/:id', (req, res, next) => {
 
       res.render('card/view', {
         card,
-        pageStyles: [{ style: '/styles/singleCard.css' }]
+        pageStyles: [{ style: '/styles/singleCard.css' }],
+        flip
       });
     })
     .catch((error) => {
@@ -108,7 +113,7 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
       if (like) {
         throw new Error('USER_CANNOT_LIKE_THE_SAME_CARD');
       } else {
-        return Feedback.create({ card: id, user: req.user._id, value: 0.3 });
+        return Feedback.create({ card: id, user: req.user._id, value: 1 });
       }
     })
     .then(() => {
@@ -128,7 +133,7 @@ cardRouter.post('/:id/like', routeGuard, (req, res, next) => {
       feedbacks.map((feedback) => {
         cardValue += feedback.value;
 
-        if (feedback.value === 0.3) likes++;
+        if (feedback.value === 1) likes++;
       });
 
       return Card.findByIdAndUpdate(
@@ -165,7 +170,7 @@ cardRouter.post('/:id/dislike', routeGuard, (req, res, next) => {
       if (unlike) {
         throw new Error('USER_CANNOT_UNLIKE_THE_SAME_CARD');
       } else {
-        return Feedback.create({ card: id, user: req.user._id, value: -0.3 });
+        return Feedback.create({ card: id, user: req.user._id, value: -1 });
       }
     })
     .then(() => {
@@ -231,7 +236,7 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
       return Card.findByIdAndUpdate(
         id,
         {
-          $push: { comments: comment._id, seenBy: req.user._id }
+          $push: { comments: comment._id }
         },
         { new: true }
       );
@@ -244,7 +249,7 @@ cardRouter.post('/:id/comment', routeGuard, (req, res, next) => {
       });
     })
     .then(() => {
-      res.redirect(`back`);
+      res.redirect(`/card/${id}`);
     })
     .catch((error) => {
       next(error);

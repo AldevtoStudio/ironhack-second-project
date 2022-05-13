@@ -1,6 +1,6 @@
 {{#if card}}
   <div class="scene scene--card">
-    <div class="cardFlip">
+    <div class="cardFlip {{#if flip}}is-flipped{{/if}}">
       <div class="card__face card__face--front">
         <div class="singleCard">
           <div class="cardMedia">
@@ -43,6 +43,8 @@
             />
           </div>
         </div>
+
+        <a href="javascript:history.back()">Go Back</a>
       </div>
 
       <div class="card__face card__face--back">
@@ -90,7 +92,11 @@
             />
           </div>
         </div>
+
+        <a href="javascript:history.back()">Go Back</a>
       </div>
     </div>
   </div>
 {{/if}}
+
+<script src="/scripts/cardFlip.js" defer></script>

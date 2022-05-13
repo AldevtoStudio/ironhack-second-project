@@ -6,14 +6,16 @@ $bronzeborder: #9c5221;
 //User-Container
 
 .leaderboard-container {
-  font-family: 'Arial', sans-serif;
-  min-height: 475px;
+  min-height: 300px;
   width: 40rem;
   margin: 0 auto;
+  margin-top: 7em;
 }
 
 .photo-second {
   width: 50px;
+  height: 50px;
+  object-fit: cover;
   background: #fff;
   border-radius: 50%;
   border: 3px solid $silverborder;
@@ -23,11 +25,21 @@ $bronzeborder: #9c5221;
 
 .photo-third {
   width: 50px;
+  height: 50px;
+  object-fit: cover;
   background: #fff;
   border-radius: 50%;
   border: 3px solid $bronzeborder;
   box-shadow: 0 0 10px $bronzeborder;
   margin: 1rem 0;
+}
+
+#crown-image {
+  position: absolute;
+  top: -7px;
+  left: 0px;
+  width: 30px;
+  transform: rotate(-20deg);
 }
 
 .parent-first-place {
@@ -38,19 +50,14 @@ $bronzeborder: #9c5221;
 
 .photo-first {
   width: 60px;
+  height: 60px;
+  object-fit: cover;
   background: #fff;
   border-radius: 50%;
   border: 3px solid $goldborder;
   box-shadow: 0 0 10px $goldborder;
   margin: 1rem 0;
   position: relative;
-}
-#crown-image {
-  position: absolute;
-  top: -7px;
-  left: 0px;
-  width: 30px;
-  transform: rotate(-20deg);
 }
 
 .profile {
@@ -88,39 +95,6 @@ $bronzeborder: #9c5221;
   margin-top: -0.5rem;
 }
 
-//Card Conatiner
-
-.first-card-container {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-#crown-card {
-  position: absolute;
-  left: -1.5rem;
-  top: -1rem;
-  width: 60px;
-  transform: rotate(-20deg);
-}
-
-.leaderboard-cards {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.leaderboard-card {
-  flex: 1 0 500px;
-  box-sizing: border-box;
-  margin: 1rem 0.25em;
-}
-
-@media screen and (min-width: 40em) {
-  .leaderboard-card {
-    max-width: calc(50% - 1em);
-  }
-}
-
 @media screen and (max-width: 40em) {
   .profile :nth-child(1) {
     order: 2;
@@ -137,19 +111,50 @@ $bronzeborder: #9c5221;
   }
 }
 
-@media screen and (min-width: 60em) {
-  .leaderboard-card {
-    max-width: calc(25% - 1em);
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.item {
+  list-style: none;
+  flex: 0 0 33.3333%;
+  width: 33%;
+  margin-bottom: 4em;
+}
+
+#crown-card {
+  position: absolute;
+  left: -1.5rem;
+  top: -2.8rem;
+  width: 60px;
+  transform: rotate(-20deg);
+}
+
+.firstCard {
+  .cardPublication {
+    position: relative;
+    border: 3px solid $goldborder;
+    box-shadow: 0 0 20px $goldborder;
   }
 }
 
-.leaderboard-card-container {
-  margin: 0 auto;
-  padding: 0 1em;
+@media screen and (max-width: 1580px) {
+  .item {
+    flex: 0 0 50%;
+    width: 50%;
+  }
 }
 
-@media screen and (min-width: 52em) {
-  .leaderboard-card-container {
-    max-width: 52em;
+@media screen and (max-width: 1070px) {
+  .item {
+    flex: 0 0 100%;
+    width: 100%;
   }
 }
