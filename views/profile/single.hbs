@@ -36,7 +36,8 @@
   
 <div class="cardList">
   {{#each cards}}
-      <div class="item">
+        <div class="item">
+      <a href="/card/{{this._id}}">
         <div class="cardPublication">
     <div class="cardMedia">
       {{#if this.media}}
@@ -69,6 +70,7 @@
         <button>Delete publication</button>
       </form>
   </div>
+      </a>
       </div>
     {{/each}}
  
