@@ -24,6 +24,8 @@ leaderboardRouter.get('/', (req, res, next) => {
           })
           user1.score = sum;
           user1.picture = value.picture;
+          user1.id = value._id;
+          console.log(user1.id);
         }
         if (index === 1) {
           user2.name = value.name;
@@ -33,6 +35,7 @@ leaderboardRouter.get('/', (req, res, next) => {
           })
           user2.score = sum;
           user2.picture = value.picture;
+          user2.id = value._id;
         }
         if (index === 2) {
           user3.name = value.name;
@@ -42,6 +45,7 @@ leaderboardRouter.get('/', (req, res, next) => {
           })
           user3.score = value.totalScore;
           user3.picture = value.picture;
+          user3.id = value._id;
         }
       });
       return Card.find().sort({ totalScore: -1 }).populate('creator').limit(10);
@@ -50,16 +54,13 @@ leaderboardRouter.get('/', (req, res, next) => {
       let cardFirst;
       let restCards = [];
       cards.forEach((card, index)=> {
-        console.log("Index" + index);
         if (index === 0){
           cardFirst = card;
         }
         if (index > 0){
-          console.log("push" + card);
           restCards.push(card);
         }
       })
-      console.log(restCards);
       res.render('leaderboard', {
         user1,
         user2,
