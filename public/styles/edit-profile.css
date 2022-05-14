@@ -5,14 +5,16 @@
 }
 
 .submit {
-  background-color: #94e0ed;
+  background-color: #4367ec;
+  color: white;
   border-radius: 8px;
   margin-top: 50px;
 }
 
 .add-picture {
   border: 1px solid #ccc;
-  background-color: #0b6183;
+  background-color: #4367ec;
+  color: white;
   display: inline-block;
   padding-right: 10px;
   width: 30%;
