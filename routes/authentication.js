@@ -20,7 +20,7 @@ router.post(
 
 router.get('/sign-in', (req, res, next) => {
   res.render('sign-in', {
-    pageStyles: [{ style: '/styles/sign-up.css' }]
+    pageStyles: [{ style: '/styles/sign-in.css' }]
   });
 });
 
