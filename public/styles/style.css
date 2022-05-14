@@ -23,6 +23,11 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'ColshareBrushScript';
+  src: url("/fonts/brush-script-mt/brush-script-mt.ttf");
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -198,7 +203,7 @@ nav .dropdown.active > .notificationsMenu > .link + .dropdown-menu {
 
 nav .appName {
   font-size: 58px;
-  font-family: 'Brush Script MT';
+  font-family: 'ColshareBrushScript';
   padding-bottom: 4px;
   margin: 0 auto;
 }
