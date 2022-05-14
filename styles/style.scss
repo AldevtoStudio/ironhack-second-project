@@ -26,6 +26,11 @@ $grey: hsl(0, 0, 90%);
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'ColshareBrushScript';
+  src: url('/fonts/brush-script-mt/brush-script-mt.ttf');
+}
+
 * {
   &,
   &:before,
@@ -204,7 +209,7 @@ nav {
 
   .appName {
     font-size: 58px;
-    font-family: 'Brush Script MT';
+    font-family: 'ColshareBrushScript';
     padding-bottom: 4px;
     margin: 0 auto;
   }
