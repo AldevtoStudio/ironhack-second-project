@@ -182,4 +182,13 @@ main {
   margin-top: -140px;
 }
 
+.hover {
+  display: none;
+}
+
+.edit-btn:hover + .hover {
+  display: block;
+  color: #4d90fe;
+}
+
 /*# sourceMappingURL=profile.css.map */
