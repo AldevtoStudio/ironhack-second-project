@@ -44,7 +44,7 @@ img {
     justify-content: center;
     align-items: flex-start;
     padding: 15px;
-    min-height: 250px;
+    min-height: calc(100% - 52%);
   }
 
   .cardBodyTitleDesc {
@@ -53,8 +53,7 @@ img {
     justify-content: center;
     align-items: flex-start;
     padding: 15px;
-    margin-bottom: 10.9em;
-    min-height: 446px;
+    min-height: calc(100% - 19.4%);
   }
 
   .cardFeedback {
