@@ -1,6 +1,6 @@
 <div class="leaderboard-container one">
   <div class="profile">
-    <div class="person second">
+    <a href="/profile/{{this.user2.id}}" class="person second">
       {{#if user2.picture}}
         <img src="{{user2.picture}}" alt="photo" class="photo-second" />
       {{else}}
@@ -12,8 +12,8 @@
       {{/if}}
       <p class="linkLeaderBoard">{{user2.name}}</p>
       <p class="points">#2 - {{user2.score}} score</p>
-    </div>
-    <div class="person first">
+    </a>
+    <a  href="/profile/{{this.user1.id}}" class="person first">
       <div class="parent-first-place">
         {{#if user1.picture}}
           <img src="{{user1.picture}}" alt="" class="photo-first" />
@@ -33,8 +33,8 @@
       <p class="linkLeaderBoard">{{user1.name}}</p>
       {{! <p class="linkLeaderBoard">MantllaBigfoot</p> }}
       <p class="points">#1 - {{user1.score}} score</p>
-    </div>
-    <div class="person third">
+    </a>
+    <a  href="/profile/{{this.user3.id}}" class="person third">
       {{#if user3.picture}}
         <img src="{{user3.picture}}" alt="" class="photo-third" />
       {{else}}
@@ -46,13 +46,14 @@
       {{/if}}
       <p class="linkLeaderBoard">{{user3.name}}</p>
       <p class="points">#3 - {{user3.score}} score</p>
-    </div>
+    </a>
   </div>
 </div>
 
 <div class="cardList">
   <div class="item">
     <div class="firstCard">
+      <a href="/card/{{cardFirst._id}}">
       <div class="cardPublication">
         <img
           id="crown-card"
@@ -91,11 +92,13 @@
           >{{cardFirst.creator.name}}</a>
         </div>
       </div>
+      </a>
     </div>
   </div>
 
   {{#each restCards}}
     <div class="item">
+      <a href="/card/{{this._id}}">
       <div class="cardPublication">
         <div class="cardMedia">
           {{#if this.media}}
@@ -127,6 +130,7 @@
           <a href="/profile/{{this.creator._id}}">{{this.creator.name}}</a>
         </div>
       </div>
+      </a>
     </div>
   {{/each}}
 </div>
