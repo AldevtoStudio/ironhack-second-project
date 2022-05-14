@@ -71,6 +71,7 @@ body {
   background-color: rgb(234, 232, 227);
 }
 #profile-stats {
+  padding: 20px;
   margin-top: 7rem;
   margin-left: 8rem;
   vertical-align: middle;
@@ -87,7 +88,7 @@ li {
 ul {
   align-items: center;
   margin: 0%;
-  margin-top: -2rem;
+  margin-top: -3rem;
   margin-left: 1.5rem;
 }
 #edit {
@@ -137,4 +138,26 @@ main {
     flex: 0 0 100%;
     width: 100%;
   }
+}
+.fa-heart-circle-bolt {
+  margin-right: 5px;
+  margin-top: 3px;
+  color: rgb(78, 6, 78);
+}
+.delete {
+  position: relative;
+  color: darkred;
+  border: none;
+  bottom: 20px;
+}
+.deletion {
+  background-color: transparent;
+  margin-right: 40px;
+  margin-left: 320px;
+  position: absolute;
+}
+.fa-trash-can {
+  color: rgb(225, 10, 10);
+  padding: 5px;
+  margin-top: 30px;
 }

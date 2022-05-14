@@ -27,7 +27,7 @@
   
 <div id="profile-stats">
   <ul>
-   <li id="scores">{{sum}}</li>
+   <li id="scores">Score: {{sum}}</li>
    </ul>
    </div> 
 </div>
@@ -64,12 +64,14 @@
         <p>{{this.comments.length}}</p>
       </div>
     </div>
-
+<div class="deletion">
     <form method="POST" action="/card/{{this._id}}/delete">
-        <button>Delete publication</button>
+        <button class="delete" ><i class="fa-solid fa-trash-can fa-lg"></i></button>
       </form>
+      </div>
   </div>
       </div>
+      
     {{/each}}
  
 </div>
