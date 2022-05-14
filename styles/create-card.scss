@@ -74,7 +74,7 @@
     display: block;
     width: 100vw;
     height: 100vh;
-   // object-fit: cover;
+    object-fit: cover;
   }
 }
 
@@ -102,7 +102,14 @@
   display: inline-block;
   overflow: hidden;
   padding: 0.625rem 1.25rem;
+
   /* 10px 20px */
+}
+
+label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .no-js .inputfile + label {
@@ -113,11 +120,6 @@
 .inputfile.has-focus + label {
   outline: 1px dotted #000;
   outline: -webkit-focus-ring-color auto 5px;
-}
-
-.inputfile + label * {
-  /* pointer-events: none; */
-  /* in case of FastClick lib use */
 }
 
 .inputfile + label svg {
@@ -132,7 +134,7 @@
 }
 
 .inputfile-1 {
-  width: 25rem;
+  width: 17rem;
 }
 
 .inputfile-1 + label {

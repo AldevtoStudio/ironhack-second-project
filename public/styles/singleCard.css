@@ -194,4 +194,14 @@
   transform: rotateY(180deg);
 }
 
+.goBackBtn {
+  backface-visibility: hidden;
+  text-align: center;
+  margin-left: 1em;
+  background-color: #4367ec;
+  color: white;
+  padding: 0.4em 1em;
+  border-radius: 10px;
+}
+
 /*# sourceMappingURL=singleCard.css.map */

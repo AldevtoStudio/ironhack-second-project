@@ -28,8 +28,6 @@ cardRouter.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const { flip } = req.query;
 
-  console.log(flip);
-
   Card.findById(id)
     .populate('creator')
     .populate({ path: 'comments', populate: { path: 'user' } })
