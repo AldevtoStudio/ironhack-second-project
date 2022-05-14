@@ -1,51 +1,55 @@
 <section class="sign-in">
   <div class="signform">
-   <div class="row">
+    <div class="row">
 
-    <script
-      src="https://kit.fontawesome.com/64feb954eb.js"
-      crossorigin="anonymous"
-    ></script>
+      <script
+        src="https://kit.fontawesome.com/64feb954eb.js"
+        crossorigin="anonymous"
+      ></script>
 
-    <div class="auth">
-       <h4 style=style="float:none;text-align:center;margin-right:5px;font-size: 0.9em;">Sign in with </h4>
-      <a href="/auth/github" class="git btn"><i
-          class="fa-brands fa-github"
-        ></i><span>Log in with Git</span></a>
-      <a href="/auth/twitter" class="twitter btn">
-        <i class="fa-brands fa-twitter"></i>
-        Login with Twitter
-      </a>
-      <a href="/auth/google" class="google btn">
-        <i class="fa fa-google fa-fw"></i>
-        Login with Google+
-      </a>
+      <div class="auth">
+        <h4
+          class="info"
+          style="float:none;text-align:center;margin-right:5px;font-size: 0.9em;"
+        >Sign in with </h4>
+        <a href="/auth/github" class="git btn"><i
+            class="fa-brands fa-github"
+          ></i><span>Login with Git</span></a>
+        <a href="/auth/twitter" class="twitter btn">
+          <i class="fa-brands fa-twitter"></i>
+          Login with Twitter
+        </a>
+        <a href="/auth/google" class="google btn">
+          <i class="fa fa-google fa-fw"></i>
+          Login with Google+
+        </a>
+      </div>
     </div>
+  </div>
+  <div class="col">
+    <div class="headit">
+      <h4>Login to your account</h4>
     </div>
-  
+
+    <div class="form">
+      <form class="signin-form" action="/auth/sign-in" method="POST">
+        <label for="input-email">Email</label>
+        <input
+          type="email"
+          id="input-email"
+          name="email"
+          placeholder="Your Email"
+        />
+        <label for="input-password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="input-password"
+          placeholder="A Strong Password"
+        />
+        <button class="submit">Sign In</button>
+      </form>
+    </div>
   </div>
 
-
-<div class="form">
-  <form class="signin-form" action="/auth/sign-in" method="POST">
-    <label for="input-email">Email</label>
-    <input
-      type="email"
-      id="input-email"
-      name="email"
-      placeholder="Your Email"
-    />
-    <label for="input-password">Password</label>
-    <input
-      type="password"
-      name="password"
-      id="input-password"
-      placeholder="A Strong Password"
-    />
-    <button class="submit">Sign In</button>
-  </form>
-</div>
-  </div>
-  </div>
-  </div>
 </section>

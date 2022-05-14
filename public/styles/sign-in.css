@@ -6,16 +6,16 @@ body {
 }
 
 .container {
-  background: #fff;
+  background: #490303;
   position: relative;
   border-radius: 5px;
+  height: 400px;
+  object-fit: cover;
+  display: flex;
 }
 
 .sign-in {
-  background: url(http://cdn.paper4pc.com/images/grunge-texture-wallpaper-5.jpg) no-repeat center top;
   background-color: transparent;
-  background-image: url(http://cdn.paper4pc.com/images/grunge-texture-wallpaper-5.jpg);
-  background-repeat: no-repeat;
   background-clip: border-box;
   background-origin: padding-box;
   background-size: auto auto;
@@ -27,24 +27,26 @@ body {
 
 .auth {
   padding: 2em;
-  margin: 0.6em 0;
+  margin: 3em 0;
   margin-top: 0;
   float: right;
   width: 50%;
-  margin: auto;
-  padding: 130px 50px;
-  margin-top: 12px;
+  padding: 130px 80px;
+  margin-top: -15px;
+  bottom: 40px;
 }
 
-.auth .auth span {
+.auth span {
   text-align: center;
   font-size: 0.9em;
   font-weight: 700;
   font-style: normal;
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
 }
 
-.auth input,
-.auth .btn {
+input,
+.btn {
   width: 100%;
   padding: 12px;
   border: none;
@@ -58,24 +60,58 @@ body {
   /* remove underline from anchors */
 }
 
-.auth input:hover,
-.auth .btn:hover {
+input:hover,
+.btn:hover {
   opacity: 1;
 }
 
-.auth .git {
+.git {
   background-color: black;
   color: white;
 }
 
-.auth .twitter {
+.twitter {
   background-color: #00acee;
   color: white;
 }
 
-.auth .google {
-  background-color: #eb6258;
+.google {
+  background-color: #ee5e41;
   color: white;
+}
+
+.submit {
+  background-color: #94e0ed;
+  border-radius: 8px;
+}
+
+.signin-form input {
+  width: 100%;
+  border: 1px solid #beb7b7;
+  padding: 0.7em;
+  margin: 0.6em 0;
+  border-radius: 0%;
+  margin-bottom: 15px;
+}
+
+.signin-form {
+  margin-bottom: 30px;
+}
+
+.signform {
+  padding-bottom: 40px;
+  padding-top: 35px;
+  margin: 0 auto;
+  margin-top: auto;
+}
+
+.submit {
+  background-color: #94e0ed;
+  border-radius: 8px;
+}
+
+.form {
+  margin-top: 20px;
 }
 
 /*# sourceMappingURL=sign-in.css.map */
