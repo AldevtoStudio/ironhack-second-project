@@ -75,9 +75,9 @@ cardRouter.post(
       creator: req.user._id
     })
       .then(() => {
-        // cardMedia = '';
-        // cardText = '';
-        // cardTitle = '';
+        cardMedia = '';
+        cardText = '';
+        cardTitle = '';
         res.redirect('/');
       })
       .catch((err) => {

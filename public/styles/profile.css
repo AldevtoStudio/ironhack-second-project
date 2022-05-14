@@ -20,8 +20,7 @@ body {
 .profile-image {
   float: left;
   width: 150px;
-  height: 100px;
-  display: flex;
+  height: 150px;
   justify-content: center;
   align-items: center;
   margin-right: 3rem;
@@ -75,8 +74,8 @@ body {
   border: 0.1rem solid #dbdbdb;
   border-radius: 0.3rem;
   padding: 0 1rem;
-  margin-left: 3rem;
-  background-color: #eae8e3;
+  margin-left: 4rem;
+  background-color: #281893;
 }
 
 #profile-stats {
@@ -108,14 +107,14 @@ ul {
   height: 40px;
   border-radius: 50%;
   border: 2px solid #4b7fcd;
-  margin-right: 45px;
+  margin-right: 95px;
   top: 0;
-  margin-bottom: 80px;
-  left: -15px;
+  bottom: -80px;
+  left: 135px;
   align-items: center;
   justify-content: center;
   display: flex;
-  background: #e5dede;
+  background: #d7caca;
   color: #1013a2;
   position: relative;
 }
@@ -176,6 +175,11 @@ main {
   color: #e10a0a;
   padding: 5px;
   margin-top: 30px;
+}
+
+.edit-btn {
+  margin-bottom: 60px;
+  margin-top: -140px;
 }
 
 /*# sourceMappingURL=profile.css.map */

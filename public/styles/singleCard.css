@@ -81,8 +81,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 15px;
-  margin-bottom: 7.5em;
-  min-height: 250px;
+  min-height: calc(100% - 36%);
 }
 
 .singleCard .cardBodyTitleDesc {
@@ -91,8 +90,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 15px;
-  margin-bottom: 18.5em;
-  min-height: 446px;
+  min-height: calc(100% - 3.5%);
 }
 
 .singleCard .cardFeedback {

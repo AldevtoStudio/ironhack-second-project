@@ -17,8 +17,7 @@ body {
 .profile-image {
   float: left;
   width: 150px;
-  height: 100px;
-  display: flex;
+  height: 150px;
   justify-content: center;
   align-items: center;
   margin-right: 3rem;
@@ -67,8 +66,8 @@ body {
   border: 0.1rem solid #dbdbdb;
   border-radius: 0.3rem;
   padding: 0 1rem;
-  margin-left: 3rem;
-  background-color: rgb(234, 232, 227);
+  margin-left: 4rem;
+  background-color: rgb(40, 24, 147);
 }
 #profile-stats {
   padding: 20px;
@@ -96,14 +95,15 @@ ul {
   height: 40px;
   border-radius: 50%;
   border: 2px solid rgb(75, 127, 205);
-  margin-right: 45px;
+  margin-right: 95px;
+
   top: 0;
-  margin-bottom: 80px;
-  left: -15px;
+  bottom: -80px;
+  left: 135px;
   align-items: center;
   justify-content: center;
   display: flex;
-  background: rgb(229, 222, 222);
+  background: rgb(215, 202, 202);
   color: rgb(16, 19, 162);
   position: relative;
 }
@@ -160,4 +160,8 @@ main {
   color: rgb(225, 10, 10);
   padding: 5px;
   margin-top: 30px;
+}
+.edit-btn {
+  margin-bottom: 60px;
+  margin-top: -140px;
 }
