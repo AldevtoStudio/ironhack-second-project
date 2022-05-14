@@ -84,7 +84,8 @@ cardRouter.post(
             cardTitle,
             cardText,
             cardMedia,
-            error: { message: err.message }
+            error: { message: err.message },
+            pageStyles: [{ style: '/styles/create-card.css' }]
           });
           return;
         }
