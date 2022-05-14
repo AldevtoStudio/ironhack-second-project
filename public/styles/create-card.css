@@ -4,23 +4,23 @@
   background-color: white;
   border: 1px solid white;
   border-radius: 10px;
-  height: 70rem;
-  width: 50rem;
+  height: 73rem;
+  width: 40rem;
   margin: 2rem auto;
-  box-shadow: 0 0 5em -1em black;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   padding: 1em;
   position: relative;
 }
 
 .create-card-title-container input {
-  width: 48rem;
+  width: 38rem;
   height: 3rem;
   font-size: 24px;
   border-color: #454545;
 }
 
 .create-card-description-container textarea {
-  width: 48rem;
+  width: 38rem;
   height: 30rem;
   font-size: 24px;
   border-color: #454545;
@@ -55,14 +55,21 @@
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
+  width: 38rem;
+  height: 30rem;
+  border: 1px solid;
+  border-color: #000;
+  border-radius: 5%;
 }
 
 .create-card-preview-container img {
-  width: 45rem;
-  height: 30rem;
-  max-width: 49em;
-  max-height: 35rem;
+  max-width: 38em;
+  max-height: 30rem;
   margin: 0 auto;
+  border-radius: 5%;
+  display: block;
+  width: 100vw;
+  height: 100vh;
 }
 
 .js .inputfile {
